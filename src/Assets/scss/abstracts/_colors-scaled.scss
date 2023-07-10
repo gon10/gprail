@@ -1,0 +1,96 @@
+$grey: #838a8c; /*#808080 is mid*/
+$primary: #697cc9;
+$secondary: #9756d1;
+$tertiary: #ffac41;
+
+$success: #2ac86c;
+$alert: #ffac41;
+$warning: #d03261;
+
+$step: 9.8%;
+
+$white: lighten($grey, $step*5);
+$grey-lllla: lighten($grey, $step*4.5);
+$grey-llll: lighten($grey, $step*4);
+$grey-llla: lighten($grey, $step*3.5);
+$grey-lll: lighten($grey, $step*3);
+$grey-lla: lighten($grey, $step*2.5);
+$grey-ll: lighten($grey, $step*2);
+$grey-la: lighten($grey, $step*1.5);
+$grey-l: lighten($grey, $step);
+$grey-m: $grey; 
+$grey-d: darken($grey, $step);
+$grey-da: darken($grey, $step*1.5);
+$grey-dd: darken($grey, $step*2);
+$grey-dda: darken($grey, $step*2.5);
+$grey-ddd: darken($grey, $step*3);
+$grey-ddda: darken($grey, $step*3.5);
+$black: darken($grey, $step*4);
+
+$step: 7.0%;
+
+$primary-lllll: lighten($primary, $step*5);
+$primary-llll: lighten($primary, $step*4);
+$primary-lll: lighten($primary, $step*3);
+$primary-ll: lighten($primary, $step*2);
+$primary-l: lighten($primary, $step);
+$primary-m: $primary;
+$primary-d: darken($primary, $step);
+$primary-dd: darken($primary, $step*2);
+$primary-ddd: darken($primary, $step*3);
+$primary-dddd: darken($primary, $step*4);
+
+$secondary-lllll: lighten($secondary, $step*5);
+$secondary-llll: lighten($secondary, $step*4);
+$secondary-lll: lighten($secondary, $step*3);
+$secondary-ll: lighten($secondary, $step*2);
+$secondary-l: lighten($secondary, $step);
+$secondary-m: $secondary;
+$secondary-d: darken($secondary, $step);
+$secondary-dd: darken($secondary, $step*2);
+$secondary-ddd: darken($secondary, $step*3);
+$secondary-dddd: darken($secondary, $step*4);
+
+$tertiary-lllll: lighten($tertiary, $step*5);
+$tertiary-llll: lighten($tertiary, $step*4);
+$tertiary-lll: lighten($tertiary, $step*3);
+$tertiary-ll: lighten($tertiary, $step*2);
+$tertiary-l: lighten($tertiary, $step);
+$tertiary-m: $tertiary;
+$tertiary-d: darken($tertiary, $step);
+$tertiary-dd: darken($tertiary, $step*2);
+$tertiary-ddd: darken($tertiary, $step*3);
+$tertiary-dddd: darken($tertiary, $step*4);
+
+$success-lllll: lighten($success, $step*5);
+$success-llll: lighten($success, $step*4);
+$success-lll: lighten($success, $step*3);
+$success-ll: lighten($success, $step*2);
+$success-l: lighten($success, $step);
+$success-m: $success;
+$success-d: darken($success, $step);
+$success-dd: darken($success, $step*2);
+$success-ddd: darken($success, $step*3);
+$success-dddd: darken($success, $step*4);
+
+$alert-lllll: lighten($alert, $step*5);
+$alert-llll: lighten($alert, $step*4);
+$alert-lll: lighten($alert, $step*3);
+$alert-ll: lighten($alert, $step*2);
+$alert-l: lighten($alert, $step);
+$alert-m: $alert;
+$alert-d: darken($alert, $step);
+$alert-dd: darken($alert, $step*2);
+$alert-ddd: darken($alert, $step*3);
+$alert-dddd: darken($alert, $step*4);
+
+$warning-lllll: lighten($warning, $step*5);
+$warning-llll: lighten($warning, $step*4);
+$warning-lll: lighten($warning, $step*3);
+$warning-ll: lighten($warning, $step*2);
+$warning-l: lighten($warning, $step);
+$warning-m: $warning;
+$warning-d: darken($warning, $step);
+$warning-dd: darken($warning, $step*2);
+$warning-ddd: darken($warning, $step*3);
+$warning-dddd: darken($warning, $step*4);

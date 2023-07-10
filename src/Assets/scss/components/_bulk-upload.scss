@@ -1,0 +1,23 @@
+.bulk-upload {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  .upload__wrap,
+  .button {
+    width: calc(50% - 10px);
+    text-align: center;
+    margin: 0 0 20px;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .bulk-upload {
+    .upload__wrap,
+    .button {
+      width: 100%;
+    }
+  }
+}

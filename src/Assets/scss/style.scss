@@ -1,0 +1,75 @@
+@import 'abstracts/colors-scaled';
+@import 'abstracts/animations';
+
+/*For testing colour palette*/
+@import 'components/color-palette';
+
+@import 'base/normalize';
+@import 'base/text.styles';
+@import 'base/button';
+@import 'base/checkbox';
+@import 'base/radio';
+@import 'base/radio-button';
+@import 'base/input';
+@import 'base/select';
+@import 'base/upload';
+@import 'base/res-table';
+@import 'base/info-box';
+@import 'base/form';
+@import 'base/boolean';
+
+@import 'components/header';
+@import 'components/footer';
+@import 'components/modal';
+@import 'components/nav';
+@import 'components/workflow';
+@import 'components/user-nav';
+@import 'components/card';
+@import 'components/button-group';
+@import 'components/meta';
+@import 'components/duration';
+@import 'components/frequency';
+@import 'components/document-status';
+@import 'components/multiple-options';
+@import 'components/evo-search-autocomplete';
+@import 'components/field-array';
+@import 'components/editable-document-linkage';
+
+@import 'components/mileage';
+@import 'components/elr';
+@import 'components/engineering-location';
+@import 'components/engineering-location-multi';
+@import 'components/elr-range';
+@import 'components/elr-range-multi';
+@import 'components/elr-segment';
+@import 'components/elr-segment-multi';
+@import 'components/track-id';
+@import 'components/blocked-lines';
+
+@import 'components/bulk-upload';
+@import 'components/date-time-range';
+@import 'components/tabs';
+@import 'components/tooltip';
+@import 'components/squares-shuffle-2';
+@import 'components/input-loading';
+
+@import 'components/image';
+@import 'components/image-collection';
+@import 'components/image-context';
+@import 'components/multi-step-bar';
+
+@import 'layout/base';
+@import 'layout/columns';
+@import 'layout/two-pane';
+ 
+@import 'pages/login-page';
+@import 'pages/register-page';
+@import 'pages/user-settings';
+@import 'pages/app-dashboard';
+@import 'pages/app';
+@import 'pages/fourzerofour';
+@import 'pages/form-builder';
+
+@import 'vendors/react-dates';
+
+@import 'themes/dark';

@@ -1,0 +1,204 @@
+.squares-shuffle-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  .squares-wrap {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    transform: rotate(45deg);
+    .square {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 1px;
+      background: hsla(200, 82%, 56%, 1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: squares-shuffle-2-animation 6400ms linear infinite;
+      @for $i from 1 through 16 {
+        &:nth-of-type(#{$i}) {
+          animation-delay: ($i * 600ms);
+        }
+      }
+      &:nth-of-type(10),
+      &:nth-of-type(11),
+      &:nth-of-type(12),
+      &:nth-of-type(13),
+      &:nth-of-type(14),
+      &:nth-of-type(15),
+      &:nth-of-type(16) {
+        animation: none;
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes squares-shuffle-2-animation {
+  0% {
+    /*ttll*/
+    transform: translate(0px,0px);
+    background: hsla(0, 82%, 56%, 1);
+  }
+  3.23% {
+    /*ttl*/
+    transform: translate(12px,0px);
+    background: hsla(22.5, 82%, 56%, 1);
+  }
+  6.45% {
+    /*ttl*/
+    transform: translate(12px,0px);
+    background: hsla(22.5, 82%, 56%, 1);
+  }
+  9.68% {
+    /*tl*/
+    transform: translate(12px,12px);
+    background: hsla(45, 82%, 56%, 1);
+  }
+  12.9% {
+    /*tl*/
+    transform: translate(12px,12px);
+    background: hsla(45, 82%, 56%, 1);
+  }
+  16.13% {
+    /*tr*/
+    transform: translate(24px,12px);
+    background: hsla(67.5, 82%, 56%, 1);
+  }
+  19.35% {
+    /*tr*/
+    transform: translate(24px,12px);
+    background: hsla(67.5, 82%, 56%, 1);
+  }
+  22.58% {
+    /*ttr*/
+    transform: translate(24px,0px);
+    background: hsla(90, 82%, 56%, 1);
+  }
+  25.81% {
+    /*ttr*/
+    transform: translate(24px,0px);
+    background: hsla(90, 82%, 56%, 1);
+  }
+
+  29.03% {
+    /*ttrr*/
+    transform: translate(36px,0px);
+    background: hsla(112.5, 82%, 56%, 1);
+  }
+  32.26% {
+    /*ttrr*/
+    transform: translate(36px,0px);
+    background: hsla(112.5, 82%, 56%, 1);
+  }
+  35.48% {
+    /*trr*/
+    transform: translate(36px,12px);
+    background: hsla(135, 82%, 56%, 1);
+  }
+  38.71% {
+    /*trr*/
+    transform: translate(36px,12px);
+    background: hsla(135, 82%, 56%, 1);
+  }
+  41.94% {
+    /*brr*/
+    transform: translate(36px,24px);
+    background: hsla(157.5, 82%, 56%, 1);
+  }
+  45.16% {
+    /*brr*/
+    transform: translate(36px,24px);
+    background: hsla(157.5, 82%, 56%, 1);
+  }
+  48.39% {
+    /*bbrr*/
+    transform: translate(36px,36px);
+    background: hsla(180, 82%, 56%, 1);
+  }
+  51.61% {
+    /*bbrr*/
+    transform: translate(36px,36px);
+    background: hsla(180, 82%, 56%, 1);
+  }
+  54.84% {
+    /*bbr*/
+    transform: translate(24px,36px);
+    background: hsla(202.5, 82%, 56%, 1);
+  }
+  58.06% {
+    /*bbr*/
+    transform: translate(24px,36px);
+    background: hsla(202.5, 82%, 56%, 1);
+  }
+
+  61.29% {
+    /*br*/
+    transform: translate(24px,24px);
+    background: hsla(225, 82%, 56%, 1);
+  }
+  64.52% {
+    /*br*/
+    transform: translate(24px,24px);
+    background: hsla(225, 82%, 56%, 1);
+  }
+  67.74% {
+    /*bl*/
+    transform: translate(12px,24px);
+    background: hsla(247.5, 82%, 56%, 1);
+  }
+  70.97% {
+    /*bl*/
+    transform: translate(12px,24px);
+    background: hsla(247.5, 82%, 56%, 1);
+  }
+  74.19% {
+    /*bbl*/
+    transform: translate(12px,36px);
+    background: hsla(270, 82%, 56%, 1);
+  }
+  77.42% {
+    /*bbl*/
+    transform: translate(12px,36px);
+    background: hsla(270, 82%, 56%, 1);
+  }
+  80.65% {
+    /*bbll*/
+    transform: translate(0px,36px);
+    background: hsla(292.5, 82%, 56%, 1);
+  }
+  83.87% {
+    /*bbll*/
+    transform: translate(0px,36px);
+    background: hsla(292.5, 82%, 56%, 1);
+  }
+  87.1% {
+    /*bll*/
+    transform: translate(0px,24px);
+    background: hsla(315, 82%, 56%, 1);
+  }
+  90.32% {
+    /*bll*/
+    transform: translate(0px,24px);
+    background: hsla(315, 82%, 56%, 1);
+  }
+
+  93.55% {
+    /*tll*/
+    transform: translate(0px,12px);
+    background: hsla(337.5, 82%, 56%, 1);
+  }
+  96.77% {
+    /*tll*/
+    transform: translate(0px,12px);
+    background: hsla(337.5, 82%, 56%, 1);
+  }
+  100% {
+    /*ttll*/
+    transform: translate(0px,0px);
+    background: hsla(360, 82%, 56%, 1);
+  }
+}

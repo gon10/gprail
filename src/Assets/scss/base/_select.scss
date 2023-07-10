@@ -1,0 +1,164 @@
+.select {
+  &__wrap {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 10px;
+    text-align: left;
+    .select {
+      &__control {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        //height: 32px;
+        min-height: 32px;
+        //max-height: 32px;
+        font: normal 400 14px/20px 'Open Sans', sans-serif;
+        border: 1px solid $grey-ll;
+        border-radius: 4px;
+        outline: none;
+        transition: 200ms ease-out;
+        &:hover,
+        &:focus,
+        &:active,
+        &--is-focused {
+          outline: none;
+          border-color: $secondary-l;
+          box-shadow: 0 0 3px 0 $secondary-lll;
+          transition: 180ms ease-in;
+          .select {
+            &__indicator-separator {
+              background-color: $secondary-l;
+              transition: 180ms ease-in;
+            }
+          }
+        }
+      }
+      &__value-container {
+        margin: 0;
+        padding: 5px 10px;
+        &--is-multi.select__value-container--has-value {
+          padding: 3px;
+          gap: 3px;
+        }
+      }
+      &__input-container {
+        margin: 0;
+        padding: 0;
+      }
+      &__placeholder {
+        margin: 0;
+        padding: 0;
+      }
+      &__indicator-separator {
+        margin: 0;
+        padding: 0;
+        transition: 200ms ease-out;
+      }
+      &__indicator {
+        cursor: pointer;
+        padding: 5px;
+      }
+      &__multi-value {
+        border: 1px solid $grey-lll;
+        background-color: $grey-llll;
+        color: $grey-m;
+        margin: 0;
+        &__label {
+          font-size: 12px; 
+          line-height: 12px;
+          padding: 5px 10px;
+        }
+        &__remove {
+          cursor: pointer;
+          transition: 200ms ease-out;
+          &:hover,
+          &:active,
+          &:focus {
+            background-color: $grey-lll;
+            color: $grey-d;
+            transition: 180ms ease-in;
+          }
+        }
+      }
+    } 
+    &--error {
+      .select {
+        &__control {
+          border-color: $warning-lll;
+          background-color: rgba($warning-lllll,0.2);
+        }
+        &__indicator-separator {
+          background-color: $warning-lll;
+        }
+      }
+    }
+    &--disabled {
+      .select {
+        &__control {
+        border-color: $grey-llll;
+        background-color: $white;
+        cursor: not-allowed;
+        &:hover,
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: $grey-llll;
+          box-shadow: none;
+        }
+      }
+      &__label {
+        color: $grey-ll;
+      }
+      }
+    }
+    &--no-label {
+      .input__help {
+        display: none;
+      }
+    }
+    &--no-margin {
+      margin: 0;
+    }
+  }
+  &__label {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: $grey-d;
+  }
+  &__option {
+    box-sizing: border-box;
+    padding: 4px;
+  }
+  &__placeholder {
+    box-sizing: border-box;
+    padding: 4px;
+    color: $grey-ll;
+  }
+  &__error {
+    color: $warning-m;
+  }
+  /*&__menu {
+    border: 1px solid red !important;
+    display: block !important;
+    height: 400px !important;
+  }
+  &__menu-list {
+    border: 1px solid blue !important;
+    display: block !important;
+    height: 400px !important;
+  }
+  &__option {
+    border: 1px solid orange !important;
+    display: block !important;
+    position: relative !important;
+    height: 40px !important;
+  }*/
+}
+

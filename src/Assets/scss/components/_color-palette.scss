@@ -1,0 +1,141 @@
+.palette {
+  box-sizing: border-box;
+  display: block;
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0 0 10px;
+  padding: 5px;
+  border: 1px solid $grey-llll;
+  border-right: none;
+
+  &:last-child {
+    border-right: 1px solid $grey-llll;
+  }
+
+  &__wrap {
+    box-sizing: border-box;
+    background: #ffffff;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &__swatch {
+    box-sizing: border-box;
+    display: block;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin: 5px;
+  }
+
+  &:nth-child(1) {
+    .palette__swatch {
+      &:nth-of-type(1) { background: $white;}
+      &:nth-of-type(2) { background: $grey-llll;}
+      &:nth-of-type(3) { background: $grey-lll;}
+      &:nth-of-type(4) { background: $grey-ll;}
+      &:nth-of-type(5) { background: $grey-l;}
+      &:nth-of-type(6) { background: $grey-m;}
+      &:nth-of-type(7) { background: $grey-d;}
+      &:nth-of-type(8) { background: $grey-dd;}
+      &:nth-of-type(9) { background: $grey-ddd;}
+      &:nth-of-type(10) { background: $black;}
+    }
+  }
+
+  &:nth-child(2) {
+    .palette__swatch {
+      &:nth-of-type(1) { background: $primary-lllll;}
+      &:nth-of-type(2) { background: $primary-llll;}
+      &:nth-of-type(3) { background: $primary-lll;}
+      &:nth-of-type(4) { background: $primary-ll;}
+      &:nth-of-type(5) { background: $primary-l;}
+      &:nth-of-type(6) { background: $primary-m;}
+      &:nth-of-type(7) { background: $primary-d;}
+      &:nth-of-type(8) { background: $primary-dd;}
+      &:nth-of-type(9) { background: $primary-ddd;}
+      &:nth-of-type(10) { background: $primary-dddd;}
+    }
+  }
+
+  &:nth-child(3) {
+    .palette__swatch {
+      &:nth-of-type(1) { background: $secondary-lllll;}
+      &:nth-of-type(2) { background: $secondary-llll;}
+      &:nth-of-type(3) { background: $secondary-lll;}
+      &:nth-of-type(4) { background: $secondary-ll;}
+      &:nth-of-type(5) { background: $secondary-l;}
+      &:nth-of-type(6) { background: $secondary-m;}
+      &:nth-of-type(7) { background: $secondary-d;}
+      &:nth-of-type(8) { background: $secondary-dd;}
+      &:nth-of-type(9) { background: $secondary-ddd;}
+      &:nth-of-type(10) { background: $secondary-dddd;}
+    }
+  }
+
+  &:nth-child(4) {
+    .palette__swatch {
+      &:nth-of-type(1) { background: $tertiary-lllll;}
+      &:nth-of-type(2) { background: $tertiary-llll;}
+      &:nth-of-type(3) { background: $tertiary-lll;}
+      &:nth-of-type(4) { background: $tertiary-ll;}
+      &:nth-of-type(5) { background: $tertiary-l;}
+      &:nth-of-type(6) { background: $tertiary-m;}
+      &:nth-of-type(7) { background: $tertiary-d;}
+      &:nth-of-type(8) { background: $tertiary-dd;}
+      &:nth-of-type(9) { background: $tertiary-ddd;}
+      &:nth-of-type(10) { background: $tertiary-dddd;}
+    }
+  }
+
+  &:nth-child(5) {
+    .palette__swatch {
+      &:nth-of-type(1) { background: $success-lllll;}
+      &:nth-of-type(2) { background: $success-llll;}
+      &:nth-of-type(3) { background: $success-lll;}
+      &:nth-of-type(4) { background: $success-ll;}
+      &:nth-of-type(5) { background: $success-l;}
+      &:nth-of-type(6) { background: $success-m;}
+      &:nth-of-type(7) { background: $success-d;}
+      &:nth-of-type(8) { background: $success-dd;}
+      &:nth-of-type(9) { background: $success-ddd;}
+      &:nth-of-type(10) { background: $success-dddd;}
+    }
+  }
+
+  &:nth-child(6) {
+    .palette__swatch {
+      &:nth-of-type(1) { background: $alert-lllll;}
+      &:nth-of-type(2) { background: $alert-llll;}
+      &:nth-of-type(3) { background: $alert-lll;}
+      &:nth-of-type(4) { background: $alert-ll;}
+      &:nth-of-type(5) { background: $alert-l;}
+      &:nth-of-type(6) { background: $alert-m;}
+      &:nth-of-type(7) { background: $alert-d;}
+      &:nth-of-type(8) { background: $alert-dd;}
+      &:nth-of-type(9) { background: $alert-ddd;}
+      &:nth-of-type(10) { background: $alert-dddd;}
+    }
+  }
+  
+  &:nth-child(7) {
+    .palette__swatch {
+      &:nth-of-type(1) { background: $warning-lllll;}
+      &:nth-of-type(2) { background: $warning-llll;}
+      &:nth-of-type(3) { background: $warning-lll;}
+      &:nth-of-type(4) { background: $warning-ll;}
+      &:nth-of-type(5) { background: $warning-l;}
+      &:nth-of-type(6) { background: $warning-m;}
+      &:nth-of-type(7) { background: $warning-d;}
+      &:nth-of-type(8) { background: $warning-dd;}
+      &:nth-of-type(9) { background: $warning-ddd;}
+      &:nth-of-type(10) { background: $warning-dddd;}
+    }
+  }
+}

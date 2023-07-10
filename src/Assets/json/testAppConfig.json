@@ -1,0 +1,503 @@
+{
+  "_id": {
+      "$oid": "641d66251bcb1d2e7b14d196"
+  },
+  "$schema": "https://schemas.on-trac.co.uk/internal/appConfig-1-0-0.json",
+  "service": "RailApps",
+  "name": "David's Test App",
+  "description": "Just David's app to test new features",
+  "icon": "puzzle-piece",
+  "launchDisplay": "RECORDS",
+  "allCapabilities": [
+      "CREATE",
+      "READ",
+      "UPDATE",
+      "DELETE"
+  ],
+  "appRoles": [
+      {
+          "roleName": "Access Templates Admin",
+          "capabilities": [
+              "CREATE",
+              "READ",
+              "UPDATE",
+              "DELETE"
+          ]
+      },
+      {
+          "roleName": "Access Templates Viewer",
+          "capabilities": [
+              "READ"
+          ]
+      }
+  ],
+  "appDocumentTypes": [
+      {
+          "documentTypeName": "network-gbr-accessTemplate",
+          "documentSchemaURI": "https://schemas.on-trac.co.uk/documents/network-gbr/accessTemplate-0-0-1.json",
+          "statusValues": [
+              "DRAFT",
+              "APPROVED",
+              "WITHDRAWN"
+          ]
+      }
+  ],
+  "railFormsConfig": {
+      "recordsViewConfig": {
+          "documentTypeName": "network-gbr-accessTemplate",
+          "columns": [
+              {
+                  "fieldName": "reference",
+                  "columnTitle": "Reference",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 1,
+                  "uiComponentName": "textField"
+              },
+              {
+                  "fieldName": "businessRef",
+                  "columnTitle": "Business Reference",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 1,
+                  "uiComponentName": "textField"
+              },
+              {
+                  "fieldName": "name",
+                  "columnTitle": "Name",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 2,
+                  "uiComponentName": "textField"
+              },
+              {
+                  "fieldName": "planningAssistantAreas[0].title",
+                  "columnTitle": "Planning Assistant Area",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 3,
+                  "uiComponentName": "textField"
+              },
+              {
+                  "fieldName": "lineOfRoutes[0].code",
+                  "columnTitle": "Line of Route (LOR) Code",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 3,
+                  "uiComponentName": "textField"
+              },
+              {
+                  "fieldName": "lineOfRoutes[0].name",
+                  "columnTitle": "LOR Description",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 3,
+                  "uiComponentName": "textField"
+              },
+              {
+                  "fieldName": "locationFrom[0].name",
+                  "columnTitle": "Location (From)",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 3,
+                  "uiComponentName": "textField"
+              },
+              {
+                  "fieldName": "locationTo[0].name",
+                  "columnTitle": "Location (To)",
+                  "sortable": true,
+                  "defaultSortOrder": "ASC",
+                  "defaultSortSequence": 3,
+                  "uiComponentName": "textField"
+              }
+          ],
+          "pagination": true,
+          "recordsPerPage": 20
+      },
+      "createUpdateConfig": {
+          "formTitle": "Access Templates",
+          "formDescription": "Manage Access Templates Records",
+          "iconShape": "hexagon",
+          "pages": [
+              {
+                  "pageHeader": {
+                      "pageTitle": "Location",
+                      "pageDescription": "Where does this Access Template refer to?",
+                      "pageNavigation" : {
+                        "link": "*",
+                        "icon": "location-pin",
+                        "title": "Location",
+                        "disabled": false,
+                        "active": false
+                      }
+                  },
+                  "pageElements": [
+                      {
+                          "uiComponentName": "textField",
+                          "boundFieldName": "reference",
+                          "isRequired": true,
+                          "prompt": "Reference",
+                          "minLength": 5,
+                          "maxLength": 15,
+                          "helpText": "Reference code for this Access Template. Example: 'DON-5-05'",
+                          "isUnique": true
+                        },
+                        {
+                            "uiComponentName": "autoBusinessReferenceField",
+                            "boundFieldName": "businessRef",
+                            "isUnique": true,
+                            "parts": [
+                                {
+                                    "type": "text",
+                                    "value": "P"
+                                },
+                                {
+                                    "type": "planningYear"
+                                },
+                                {
+                                    "type": "text",
+                                    "value": "/"
+                                },
+                                {
+                                    "type": "randomNumbers",
+                                    "limit": "7"
+                                }
+                            ]
+                      },
+                      {
+                          "uiComponentName": "textField",
+                          "boundFieldName": "name",
+                          "isRequired": true,
+                          "prompt": "Name",
+                          "maxLength": 100,
+                          "helpText": "Name for this Access Template. Examples 'Hatfield and Stainforth'"
+                      },
+                      {
+                          "uiComponentName": "documentLinkageField",
+                          "boundFieldName": "routes",
+                          "prompt": "Route(s)",
+                          "helpText": "Routes that use this Access Template",
+                          "refDocCollection": "network-gbr-route",
+                          "isRequired": true,
+                          "fetchFields": [
+                              "name"
+                          ],
+                          "queryFields": [
+                              "name"
+                          ],
+                          "queryFilter": {
+                              "status": "APPROVED"
+                          },
+                          "autoCompleteLimit": 6,
+                          "isMultiSelect": true,
+                          "fieldsToShow": [
+                              "name"
+                          ]
+                      },
+                      {
+                          "uiComponentName": "documentLinkageField",
+                          "boundFieldName": "planningAssistantAreas",
+                          "prompt": "Planning Assistant Area(s)",
+                          "helpText": "Planning Assistant Areas applicable to this Access Template",
+                          "refDocCollection": "network-gbr-planningAssistantArea",
+                          "isRequired": true,
+                          "fetchFields": [
+                              "title",
+                              "_version"
+                          ],
+                          "queryFields": [
+                              "title"
+                          ],
+                          "queryFilter": {
+                              "status": "APPROVED"
+                          },
+                          "autoCompleteLimit": 6,
+                          "isMultiSelect": true,
+                          "fieldsToShow": [
+                              "title"
+                          ]
+                      },
+                      {
+                          "uiComponentName": "documentLinkageField",
+                          "boundFieldName": "lineOfRoutes",
+                          "prompt": "Line of Route(s)",
+                          "helpText": "The Line of Routes on this Access Template",
+                          "refDocCollection": "network-gbr-lineOfRoute",
+                          "isRequired": true,
+                          "fetchFields": [
+                              "code",
+                              "name"
+                          ],
+                          "queryFields": [
+                              "code",
+                              "name"
+                          ],
+                          "queryFilter": {
+                              "status": "APPROVED"
+                          },
+                          "autoCompleteLimit": 6,
+                          "isMultiSelect": true,
+                          "fieldsToShow": [
+                              "code",
+                              "name"
+                          ]
+                      },
+                      {
+                          "uiComponentName": "documentLinkageField",
+                          "boundFieldName": "electricalControlRooms",
+                          "prompt": "Electrical Control Room(s)",
+                          "helpText": "Any ECRs that apply to the area under this Access Template",
+                          "refDocCollection": "network-gbr-electricalControlRoom",
+                          "isRequired": false,
+                          "fetchFields": [
+                              "title",
+                              "emerPhoneNumber",
+                              "emailAddress",
+                              "intPhoneNumber",
+                              "extPhoneNumber",
+                              "ecrType"
+                          ],
+                          "queryFields": [
+                              "title"
+                          ],
+                          "queryFilter": {
+                              "status": "APPROVED"
+                          },
+                          "autoCompleteLimit": 6,
+                          "isMultiSelect": true,
+                          "fieldsToShow": [
+                              "title"
+                          ]
+                      },
+                      {
+                          "uiComponentName": "documentLinkageField",
+                          "boundFieldName": "locationFrom",
+                          "prompt": "From Location",
+                          "helpText": "The location name where this Access Template starts",
+                          "refDocCollection": "network-gbr-saLocation",
+                          "isRequired": true,
+                          "fetchFields": [
+                              "name",
+                              "engineeringLocations",
+                              "signalPanels"
+                          ],
+                          "queryFields": [
+                              "name",
+                              "aliases"
+                          ],
+                          "autoCompleteLimit": 6,
+                          "isMultiSelect": false,
+                          "fieldsToShow": [
+                              "name"
+                          ]
+                      },
+                      {
+                          "uiComponentName": "documentLinkageField",
+                          "boundFieldName": "locationTo",
+                          "prompt": "To Location",
+                          "helpText": "The location name where this Access Template ends",
+                          "refDocCollection": "network-gbr-saLocation",
+                          "isRequired": true,
+                          "fetchFields": [
+                              "name",
+                              "engineeringLocations",
+                              "signalPanels"
+                          ],
+                          "queryFields": [
+                              "name",
+                              "aliases"
+                          ],
+                          "autoCompleteLimit": 6,
+                          "isMultiSelect": false,
+                          "fieldsToShow": [
+                              "name"
+                          ]
+                      },
+                      {
+                          "uiComponentName": "booleanField",
+                          "boundFieldName": "allowedForDailyListLineBlockages",
+                          "displayType": "toggle",
+                          "default": false,
+                          "inline": true,
+                          "right": true,
+                          "prompt": "Allow use with Daily List Line Blockages?",
+                          "helpText": "When set, planners could use the protection limits described in this template when creating a Daily List Line Blockage for the same location"
+                      }
+                  ]
+              },
+              {
+                  "pageHeader": {
+                      "pageTitle": "Upload Diagram",
+                      "pageDescription": "Upload a diagram here.",
+                      "pageNavigation" : {
+                        "link": "upload",
+                        "icon": "upload",
+                        "title": "Diagram",
+                        "disabled": false,
+                        "active": false
+                      }
+                  },
+                  "pageElements": [
+                      {
+                          "uiComponentName": "attachmentField",
+                          "boundFieldName": "schematicDiagram",
+                          "isRequired": "false",
+                          "prompt": "Schematic Diagram Upload",
+                          "helpText": "Upload a schematic diagram",
+                          "uploadFileLimit": 1,
+                          "accept": [
+                              "image/png",
+                              "image/jpeg"
+                          ],
+                          "disabled": false
+                      }
+                  ]
+              },
+              {
+                  "pageHeader": {
+                      "pageTitle": "ELR Mileages",
+                      "pageDescription": "What are the ELRs and Mileage extents for this Access Template?",
+                      "pageNavigation" : {
+                        "link": "mileage",
+                        "icon": "ruler-horizontal",
+                        "title": "Mileage",
+                        "disabled": false,
+                        "active": false
+                      }
+                  },
+                  "pageElements": [
+                      {
+                          "uiComponentName": "imageContext",
+                          "boundFieldName": "schematicDiagram",
+                          "displayAs": "lightBox",
+                          "prompt": "Schematic Diagram"
+                      },
+                      {
+                          "uiComponentName": "blockedLines",
+                          "boundFieldName": "linesAtSite",
+                          "prompt": "Lines at Site",
+                          "helpText": "Specify each line at site and the ELR and mileages for this Access Template",
+                          "showOpenLines": false,
+                          "showDirection": false,
+                          "showSpeed": false,
+                          "showELRInfo": true,
+                          "showAdditionalSignals": false,
+                          "showDisconnectionPoints": false,
+                          "showProtectionLimits": false,
+                          "showElectrification": false
+                      },
+                      {
+                          "uiComponentName": "locationNesaGallery",
+                          "boundFieldNames": [
+                              "fromLocation",
+                              "toLocation"
+                          ],
+                          "prompt": "NESA Diagrams",
+                          "helpText": "NESA Diagrams for this location"
+                      }
+                  ]
+              },
+              {
+                  "pageHeader": {
+                      "pageTitle": "Protection Limits",
+                      "pageDescription": "What are the protection limits for this Access Template?",
+                      "pageNavigation" : {
+                        "link": "protection",
+                        "icon": "helmet-safety",
+                        "title": "Protection",
+                        "disabled": false,
+                        "active": false
+                      }
+                  },
+                  "pageElements": [
+                      {
+                          "uiComponentName": "imageContext",
+                          "boundFieldName": "schematicDiagram",
+                          "displayAs": "lightBox",
+                          "prompt": "Schematic Diagram"
+                      },
+                      {
+                          "uiComponentName": "blockedLines",
+                          "boundFieldName": "linesAtSite",
+                          "prompt": "Lines at Site",
+                          "helpText": "Specify the protection limits for each line",
+                          "showOpenLines": true,
+                          "showDirection": true,
+                          "showSpeed": true,
+                          "showELRInfo": false,
+                          "showAdditionalSignals": true,
+                          "showDisconnectionPoints": true,
+                          "showProtectionLimits": true,
+                          "showElectrification": true,
+                          "showAdditionalProtection": true
+                      },
+                      {
+                          "uiComponentName": "locationNesaGallery",
+                          "boundFieldNames": [
+                              "fromLocation",
+                              "toLocation"
+                          ],
+                          "prompt": "NESA Diagrams",
+                          "helpText": "NESA Diagrams for this location"
+                      }
+                  ]
+              },
+              {
+                  "pageHeader": {
+                      "pageTitle": "Access Info",
+                      "pageDescription": "Please provide access information for this section of track?",
+                      "pageNavigation" : {
+                        "link": "access",
+                        "icon": "road-barrier",
+                        "title": "Access",
+                        "disabled": false,
+                        "active": false
+                      }
+                  },
+                  "pageElements": [
+                      {
+                          "uiComponentName": "textField",
+                          "boundFieldName": "optimumTimes",
+                          "isRequired": false,
+                          "numLines": 5,
+                          "prompt": "Optimum Times (WTT Gaps)",
+                          "helpText": "Specify any known gaps in the Working Train Timetable"
+                      },
+                      {
+                          "uiComponentName": "textField",
+                          "boundFieldName": "timesToAvoid",
+                          "isRequired": false,
+                          "numLines": 5,
+                          "prompt": "Times to Avoid",
+                          "helpText": "Specify any times to avoid"
+                      },
+                      {
+                          "uiComponentName": "textField",
+                          "boundFieldName": "possessionInfo",
+                          "isRequired": false,
+                          "numLines": 5,
+                          "prompt": "Possession Information",
+                          "helpText": "If this template is under regular possessions, provide details here"
+                      },
+                      {
+                          "uiComponentName": "textField",
+                          "boundFieldName": "lineBlockageAccess",
+                          "isRequired": false,
+                          "numLines": 5,
+                          "prompt": "Line Blockage Access",
+                          "helpText": "Add any notes for the line blockage access"
+                      },
+                      {
+                          "uiComponentName": "textField",
+                          "boundFieldName": "additionalInfo",
+                          "isRequired": false,
+                          "numLines": 5,
+                          "prompt": "Additional Information",
+                          "helpText": "Add any additional notes for the template user"
+                      }
+                  ]
+              }
+          ]
+      }
+  }
+}

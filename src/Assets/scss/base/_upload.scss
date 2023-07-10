@@ -1,0 +1,83 @@
+.upload {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+
+  &__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    margin: 0 0 10px;
+    border: 1px solid $grey-lll;
+    border-radius: 4px;
+    &--disabled {
+      .upload {
+        &__label {
+          border-color: $grey-ll;
+          background-color: $grey-ll;
+          cursor: not-allowed;
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: $grey-ll;
+            border-color: $grey-ll;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+    &--success {
+      .upload {
+        &__label {
+          background-color: $success-m;
+          border-color: $success-m;
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: $success-d;
+            border-color: $success-d;
+          }
+        }
+      }
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 5px 20px;
+    margin: 0;
+    border-radius: 4px;
+    transition: 200ms ease-out;
+    outline: none;
+    text-decoration: none;
+    font-weight: 300;
+    cursor: pointer;
+    background-color: $primary-d;
+    color: $white;
+    border: 1px solid $primary-d;
+    max-width: 100%;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $primary-dd;
+      border: 1px solid $primary-dd;
+      outline: none;
+      transition: 180ms ease-in;
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    margin: 0 5px 0 0;
+  }
+}

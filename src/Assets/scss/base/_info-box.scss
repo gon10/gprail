@@ -1,0 +1,36 @@
+.info-box {
+  box-sizing: border-box;
+  display: inline-block;
+  width: auto;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 5px 20px;
+  border: 1px solid $grey-lll;
+  border-radius: 0px;
+  &--full-width {
+    display: block;
+  }
+  &--info {
+    border-color: $secondary-lll;
+    background: $secondary-lllll;
+    color: $secondary-dddd;
+  }
+  &--success {
+    border-color: $success-lll;
+    background: $success-lllll;
+    color: $success-dddd;
+  }
+  &--alert {
+    border-color: $alert-lll;
+    background: $alert-lllll;
+    color: $alert-dddd;
+  }
+  &--warning {
+    border-color: $warning-lll;
+    background: $warning-lllll;
+    color: $warning-dddd;
+  }
+  &__icon {
+    margin-right: 20px;
+  }
+}

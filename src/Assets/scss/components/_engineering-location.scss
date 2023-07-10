@@ -1,0 +1,174 @@
+.engineering-location {
+  &__wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 20px;
+    .input {
+      &__help {
+        z-index: 2;
+        &-text {
+          width: 100%;
+        }
+      }
+      &__error {
+        width: 100%;
+      }
+    }
+    &--disabled {
+      .engineering-location {
+        &__label {
+          color: $grey-ll;
+        }
+      }
+    }
+    &--no-label {
+      .input__help {
+        display: none;
+      }
+    }
+    &--no-margin {
+      margin: 0;
+    }
+    &--no-units {
+      .engineering-location {
+        &__elr {
+          width: calc(33.33% - 20px/2);
+        }
+        &__mileage {
+          width: calc(66.66% - 20px/2);
+        }
+      }
+    }
+    &--single-mileage {
+      .engineering-location {
+        &__elr {
+          width: calc(33.33% - 20px/2);
+        }
+        &__mileage {
+          width: calc(66.66% - 20px/2);
+        }
+      }
+      &.engineering-location__wrap--no-units {
+        .engineering-location {
+          &__elr,
+          &__mileage {
+            width: calc(50% - 20px/2);
+          }
+        }
+      }
+    }
+    &--track-id {
+      .engineering-location {
+        &__elr {
+          width: calc(20% - 40px/3);
+        }
+        &__track-id {
+          width: calc(20% - 40px/3);
+        }
+        &__mileage {
+          width: calc(60% - 40px/3);
+        }
+      }
+      &.engineering-location__wrap--single-mileage,
+      &.engineering-location__wrap--no-units {
+        .engineering-location {
+          &__elr {
+            width: calc(40% - 40px/3);
+          }
+          &__track-id {
+            width: calc(30% - 40px/3);
+          }
+          &__mileage {
+            width: calc(30% - 40px/3);
+          }
+        }
+      }
+      &.engineering-location__wrap--single-mileage.engineering-location__wrap--no-units {
+        .engineering-location {
+          &__elr {
+            width: calc(33.33% - 40px/3);
+          }
+          &__track-id {
+            width: calc(33.33% - 40px/3);
+          }
+          &__mileage {
+            width: calc(33.33% - 40px/3);
+          }
+        }
+      }
+    }
+  }
+  &__elr {
+    width: calc(25% - 20px/2);
+  }
+  &__mileage {
+    width: calc(75% - 20px/2);
+  }
+  &__label {
+    width: 100%;
+    font-weight: 700;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .engineering-location {
+    &__wrap {
+      flex-direction: column;
+      gap: 0 20px;
+      &--single-mileage {
+        .engineering-location {
+          &__elr,
+          &__mileage {
+            width: 100%;
+          }
+        }
+        &.engineering-location__wrap--no-units {
+          .engineering-location {
+            &__elr,
+            &__mileage {
+              width: 100%;
+            }
+          }
+        }
+      }
+      &--no-units {
+        .engineering-location {
+          &__elr,
+          &__mileage {
+            width: 100%;
+          }
+        }
+      } 
+      &--track-id {
+        &.engineering-location__wrap--single-mileage.engineering-location__wrap--no-units,
+        &.engineering-location__wrap--single-mileage,
+        &.engineering-location__wrap--no-units {
+          .engineering-location {
+            &__elr,
+            &__track-id,
+            &__mileage {
+              width: 100%;
+            }
+          }
+        }
+        .engineering-location {
+          &__elr,
+          &__track-id,
+          &__mileage {
+            width: 100%;
+          }
+        } 
+      }
+    }
+    &__elr,
+    &__mileage {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,471 @@
+.dark {
+  background: $black;
+
+  .network-rail-logo {
+    &__path {
+      fill: $grey-llll;
+    }
+  }
+
+  .page {
+    background: $black;
+    color: $grey-llll;
+
+    &__wrap {
+      background: $black;
+      border-color: $grey-ddd;
+    }
+  }
+
+  .input,
+  .textarea,
+  .select {
+    background: $black;
+    border-color: $grey-d;
+    color: $grey-lll;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: $secondary-m;
+      box-shadow: 0 0 3px 0 $secondary-m;
+    }
+
+    &__wrap {
+      &--error {
+        .input,
+        .textarea {
+          border-color: $warning-ll;
+          background-color: rgba($warning-ddd,1);
+        }
+      }
+      &--disabled {
+        .input,
+        .textarea {
+          border-color: $grey-ddd;
+          &:hover,
+          &:focus,
+          &:active {
+            border-color: $grey-ddd;
+            box-shadow: none;
+          }
+        }
+      }
+    }
+
+    &__label {
+      color: $grey-ll;
+    }
+    &__error {
+      color: $warning-lll;
+    }
+  }
+
+  .button,
+  a.button {
+    &--secondary {
+      background: transparent;
+      color: $primary-l;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: rgba($primary-dddd, 0.4);
+        color: $primary-llll;
+        border-color: $primary-d;
+      }
+    }
+
+    &--tertiary {
+      color: $primary-l;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: rgba($primary-dddd, 0.4);
+        color: $primary-llll;
+      }
+
+      &.button--disabled {
+        color: $grey-dd;
+        background: transparent;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $grey-dd;
+          background: transparent;
+        }
+      }
+    }
+  }
+
+  .checkbox {
+    &__label {
+      color: $grey-ll;
+    }
+  }
+
+  .create-form,
+  .report-form,
+  .search-form,
+  .filter-form {
+    border-color: $grey-dd;
+    background: rgba($grey-dd, 0.2);
+
+    &__section {
+      border-color: $grey-ddd;
+    }
+    .input {
+      &__approved .input {
+        border-color: $success-m;
+        color: $success-l;
+        &__label {
+          color: $success-m;
+        }
+      }
+      &__edited .input {
+        border-color: $alert-m;
+        color: $alert-l;
+        &__label {
+          color: $alert-m;
+        }
+      }
+      &__rejected .input {
+        border-color: $warning-m;
+        color: $warning-ll;
+        &__label {
+          color: $warning-l;
+        }
+      }
+    }
+  }
+
+  .approve-pane {
+    border-color: $grey-dd;
+    background: rgba($grey-dd, 0.2);
+    &__entry {
+      background: rgba($grey-dd, 0.2);
+      &--approved {
+        .approve-pane__entry__metaDetails {
+          color: $success-ll;
+        }
+      }
+      &--edited {
+        .approve-pane__entry__metaDetails {
+          color: $alert-ll;
+        }
+      }
+      &--rejected {
+        .approve-pane__entry__metaDetails {
+          color: $warning-ll;
+        }
+      }
+    }
+  }
+
+  .image {
+    background: $grey-ddd;
+    &__wrap {
+      background: $black;
+      border-color: $grey-dd;
+    }
+  }
+
+  .card {
+    border-color: $grey-dd;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.8);
+  }
+
+  .header,
+  .footer {
+    border-color: $grey-dd;
+
+    &__title {
+      color: $grey-llll;
+    }
+  }
+
+  .workflow {
+    border-color: $grey-dd;
+    color: $grey-dd;
+  }
+
+  .admin-report-filter {
+    border-color: $grey-dd;
+    background: rgba($grey-dd, 0.2);
+  }
+
+  .nav,
+  .user-nav {
+    &__button {
+      background: $black;
+      border-color: $grey-ddd;
+      color: $secondary-ll;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $secondary-llll;
+        background: $secondary-dddd;
+        border-color: $secondary-dddd;
+      }
+
+      &--active {
+        background: $black;
+        cursor: initial;
+        font-weight: 700;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $secondary-ll;
+          background: $black;
+        }
+      }
+    }
+
+    &__ul {
+      border-color: $grey-ddd;
+    }
+  }
+
+  .res-table {
+    &__wrap {
+      border-color: $grey-dd;
+      color: $grey-ll;
+    }
+
+    &__th {
+      background: $grey-ddd;
+      color: $grey-llll;
+    }
+
+    &__tr:nth-of-type(odd) {
+      background: transparent;
+    }
+
+    &__tr:nth-of-type(even) {
+      background: rgba($secondary-ddd, 0.35);
+    }
+  }
+
+  .generic-hazards {
+    &__hazard {
+      border-color: $grey-dd;
+    }
+  }
+
+  .user-guide,
+  .privacy,
+  .hazard-form-pdf,
+  .buried-services,
+  .useful-link,
+  .green-zone,
+  .signal-wire-deg__wrap {
+    border-color: $grey-dd;
+  }
+
+  .mobile-coverage {
+    border-color: $grey-dd;
+
+    &__warn {
+      background: rgba($secondary-dd, 0.4);
+      color: $grey-llll;
+      border-color: $secondary-dddd;
+    }
+  }
+
+  .SingleDatePickerInput {
+    background: $black;
+    border-color: $grey-ddd;
+    color: $grey-lll;
+  }
+
+  .SingleDatePicker {
+    &_picker {
+      background-color: $grey-ddd;
+    }
+
+    &__fullScreenPortal {
+      background-color: $grey-ddd;
+    }
+  }
+
+  .CalendarDay {
+    &__default {
+      color: $grey-llll;
+      background: $grey-ddd;
+      border-color: $grey-d;
+
+      &:hover {
+        background: $grey-dd;
+        border-color: $grey-d;
+      }
+    }
+
+    &__outside {
+      background: $grey-ddd;
+    }
+
+    &__selected {
+      background: $primary-m;
+      border-color: $primary-m;
+      color: $white;
+  
+      &:active, 
+      &:hover {
+        background: $primary-m;
+        border-color: $primary-m;
+        color: $white;
+      }
+  
+      &_span {
+        background: rgba($primary-dd,0.5);
+        border-color: $primary-dd;
+        color: $white;
+  
+        &:active, 
+        &:hover {
+          background: $primary-d;
+          border-color: $primary-d;
+          color: $white;
+        }
+      }
+    }
+
+    &__blocked {
+      &_out_of_range {
+        background: transparent;
+        color: $grey-d;
+  
+        &:active,
+        &:hover {
+          background: transparent;
+          color: $grey-d;
+        }
+      }
+    }
+  }
+
+  .CalendarMonth {
+    background: $grey-ddd;
+    color: $grey-llll;
+    &_caption {
+      color: $grey-llll;
+    }
+  }
+
+  .CalendarMonthGrid {
+    background: $grey-ddd;
+  }
+
+  .DayPickerNavigation {
+    &_button {
+      &__default {
+        background-color: $grey-ddd;
+        border-color: $grey-d;
+        &:hover {
+          background-color: $grey-dd;
+          border-color: $grey-m;
+        }
+      }
+
+      &__verticalDefault {
+        background: $grey-ddd;
+        border-color: $grey-d;
+      }
+    }
+
+    &_svg {
+      &__horizontal {
+        fill: $grey-llll;
+      }
+  
+      &__vertical {
+        fill: $grey-llll;
+      }
+  
+      &__disabled {
+        fill: $grey-dd;
+      }
+    }
+  }
+
+  .DayPicker {
+    background: $grey-ddd;
+
+    &__horizontal {
+      background: $grey-ddd;
+    }
+  }
+
+  .DateInput {
+    &_input {
+      background: $black;
+      color: $grey-llll;
+    }
+
+    &_fangShape {
+      fill: $grey-ddd;
+    }
+
+    &_fangStroke {
+      stroke: $grey-ddd;
+    }
+  }
+
+  .DateRangePickerInput {
+    background-color: $black;
+    border-color: $grey-d;
+    color: $grey-lll;
+
+    &__withBorder {
+      border-color: $grey-d;
+  
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: $secondary-m;
+        box-shadow: 0 0 3px 0 $secondary-m;
+      }
+    }
+  }
+
+  .DateRangePicker {
+    &_picker {
+      background-color: $grey-ddd;
+    }
+
+    &__fullScreenPortal {
+      background-color: $grey-ddd;
+    }
+  }
+
+  .DayPickerKeyboardShortcuts {
+    &_panel {
+      background: $grey-dd;
+      color: $white;
+      border-color: $grey-dd;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.5);
+    }
+  }
+
+  .img-comp {
+    opacity: 0.4;
+    background: rgba(#ffd3c2, 0.3);
+  }
+}
+
+@media only screen and (max-width: 899px) {
+  .dark {
+    .res-table {
+      &__tr,
+      &__tr--input,
+      &__tr--clickable {
+        border-color: $grey-dd;
+        color: $grey-llll;
+      }
+    }
+  }
+}

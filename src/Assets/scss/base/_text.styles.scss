@@ -1,0 +1,103 @@
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: top;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  line-height: 28px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  line-height: 20px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+p {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+a {
+  font-size: 1em;
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0;
+  color: $primary-d;
+  text-decoration: none;
+  outline: none;
+  &:hover,
+  &:focus,
+  &:active {
+    color: $primary-dd;
+    text-decoration: underline;
+  }
+}
+
+li,
+label,
+input,
+select,
+option,
+button {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.small {
+  font-size: 0.8em;
+}
+
+.success {
+  color: $success-m;
+}
+.alert {
+  color: $alert-m;
+}
+.warning {
+  color: $warning-m;
+}

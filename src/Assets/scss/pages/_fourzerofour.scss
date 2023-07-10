@@ -1,0 +1,30 @@
+.fourzerofour-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+  flex: 1 1 auto;
+  color: $grey-l;
+  text-align: center;
+  &__h2 {
+    font-size: 26px;
+    line-height: 1em;
+  }
+  &__icon {
+    display: block;
+    font-size: 120px;
+    line-height: 1em;
+    margin: 0 0 20px;
+    padding: 0;
+    color: $grey-lll
+  }
+  &__p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1em;
+  }
+}

@@ -1,0 +1,249 @@
+.two-pane {
+  &__wrap {
+    box-sizing: border-box;
+    height: 100%;
+    flex: 1 1 auto;
+  }
+
+  &__pane {
+    box-sizing: border-box;
+    border-top: 1px solid $grey-llll;
+    border-radius: 2px;
+    height: 100%;
+    padding: 20px;
+    margin: 0;
+    overflow: auto;
+
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background: rgba($grey-lll, 0.5);
+      border-left: 1px solid $grey-lll;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 200ms ease-out;
+
+      &:hover {
+        background: rgba($grey-lll, 0.85);
+        transition: 180ms ease-in;
+      }
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba($white, 0.6);
+      border-radius: 5px;
+      border-left: 1px solid $grey-lll;
+      transition: 200ms ease-out;
+
+      &:hover {
+        background: rgba($white, 0.85);
+        transition: 180ms ease-in;
+      }
+    }
+  }
+}
+
+.split-screen-page {
+  display: block;
+  position: relative;
+  flex: 1 1 auto;
+  margin: 20px 0 0;
+  max-width: 100vw;
+  width: 100%;
+
+  .app {
+    &__page {
+      padding: 0;
+    }
+  }
+
+  .form {
+    margin: 0 0 40px;
+    &__wrap {
+      max-height: calc( 100vh - 360px );
+      overflow: hidden;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        width: 10px;
+        background: rgba($grey-lll, 0.5);
+        border-left: 1px solid $grey-lll;
+        overflow: hidden;
+        cursor: pointer;
+        transition: 200ms ease-out;
+  
+        &:hover {
+          background: rgba($grey-lll, 0.85);
+          transition: 180ms ease-in;
+        }
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background: rgba($white, 0.6);
+        border-radius: 5px;
+        border-left: 1px solid $grey-lll;
+        transition: 200ms ease-out;
+  
+        &:hover {
+          background: rgba($white, 0.85);
+          transition: 180ms ease-in;
+        }
+      }
+    }
+
+    &__footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: $white;
+      margin: 0;
+      border: none;
+      border-top: 1px solid $grey-llll;
+    }
+  }
+}
+
+
+// ------------------------------------------------------------------
+// React Reflex 
+//-------------------------------------------------------------------
+
+body.reflex-col-resize {
+  cursor: col-resize;
+}
+
+body.reflex-row-resize {
+  cursor: row-resize;
+}
+
+.reflex-container {
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  &.horizontal {
+    flex-direction: column;
+    min-height: 1px;
+    >.reflex-splitter {
+      height: 10px;
+      margin: -5px 0;
+      border-top: 5px solid rgba($primary-m, 0);
+      border-bottom: 5px solid rgba($primary-m, 0);
+      cursor: row-resize;
+      width: 100%;
+      background: $primary-m;
+      opacity: 0.2;
+      z-index: 1;
+      box-sizing: border-box;
+      background-clip: padding-box;
+      transition: 200ms ease-out;
+
+      &:hover,
+      &.active {
+        border-top: 5px solid rgba($primary-m, 0.8);
+        border-bottom: 5px solid rgba($primary-m, 0.8);
+        transition: 180ms ease-in;
+      }
+      &.reflex-thin {
+        border-bottom: 8px solid rgba(255, 255, 255, 0);
+        border-top: 8px solid rgba(255, 255, 255, 0);
+        height: 17px !important;
+        cursor: row-resize;
+        margin: -8px 0;
+        width: 100%;
+        &.active,
+        &:hover {
+          border-bottom: 8px solid #e4e4e4;
+          border-top: 8px solid #e4e4e4;
+        }
+      }
+    }
+  }
+
+  &.vertical {
+    flex-direction: row;
+    min-width: 1px;
+    >.reflex-splitter {
+      width: 11px;
+      height: unset;
+      margin: 0 -5px;
+      border-left: 5px solid rgba($primary-m, 0);
+      border-right: 5px solid rgba($primary-m, 0);
+      cursor: col-resize;
+      background: $primary-m;
+      opacity: 0.2;
+      z-index: 1;
+      box-sizing: border-box;
+      background-clip: padding-box;
+      transition: 200ms ease-out;
+
+      &:hover,
+      &.active {
+        border-left: 5px solid rgba($primary-m, 0.8);
+        border-right: 5px solid rgba($primary-m, 0.8);
+        transition: 180ms ease-in;
+      }
+      &.reflex-thin {
+        border-right: 8px solid rgba(255, 255, 255, 0);
+        border-left: 8px solid rgba(255, 255, 255, 0);
+        width: 17px !important;
+        cursor: col-resize;
+        margin: 0 -8px;
+        height: 100%;
+        &.active,
+        &:hover {
+          border-right: 8px solid #e4e4e4;
+          border-left: 8px solid #e4e4e4;
+        }
+      }
+    }
+  }
+
+  > .reflex-element {
+    position: relative;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+  }
+
+  &.reflex-resizing {
+    > .reflex-element {
+      pointer-events: none;
+      user-select: none;
+    }
+  } 
+
+  > .reflex-element {
+    > .reflex-size-aware {
+      height: 100%;
+      width: 100%;
+    }
+    &.horizontal .reflex-handle {
+      cursor: row-resize;
+      user-select: none;
+    }
+    &.vertical .reflex-handle {
+      cursor: col-resize;
+      user-select: none;
+    }
+  } 
+
+  > .reflex-splitter {
+    z-index: 100;
+    &.reflex-thin {
+      box-sizing: border-box;
+      background-clip: padding-box;
+      opacity: 0.2;
+      z-index: 100;
+      &.active,
+      &:hover {
+        transition: all 1.5s ease;
+        opacity: 0.5;
+      }
+    }
+  }
+}

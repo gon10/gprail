@@ -1,0 +1,78 @@
+.field-array {
+  &__wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    margin: 0 0 20px;
+    display: block;
+    border: 1px solid $grey-lll;
+    border-radius: 16px;
+    .input {
+      &__help {
+        top: 20px;
+        right: 20px;
+        &-text--show:last-child {
+          padding-bottom: 10px;
+        }
+      }
+      &__error {
+        margin-bottom: 10px;
+      }
+    }
+    &--disabled {
+      border-color: $grey-llll;
+      .field-array {
+        &__label {
+          color: $grey-ll;
+        }
+      }
+    }
+  }
+  &__label {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0 0 10px;
+    padding: 0 20px 0 0;
+    color: $grey-d;
+  }
+  &__footer {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 20px;
+  }
+  &__controls {
+    text-align: right;
+  }
+  &__content {
+    > div {
+      margin-bottom: 10px;
+    }
+    &__item {
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 0 20px;
+      > div {
+        width: calc(100% - 80px);
+        margin: 0;
+      }
+      > .button {
+        width: 60px;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.frequency {
+  &__wrap {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    //align-content: stretch;
+    gap: 0 10px;
+    .input__wrap,
+    .select__wrap {
+      width: auto;
+      flex-grow: 1;
+    }
+    .input__error,
+    .input__help-text {
+      width: 100%;
+    }
+    &--disabled {
+      .frequency {
+        &__label {
+          color: $grey-ll;
+        }
+      }
+    }
+  }
+  &__label {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px 0 0;
+    margin: 0;
+    font: normal 400 14px/20px 'Open Sans', sans-serif;
+    color: $grey-d;
+  }
+}

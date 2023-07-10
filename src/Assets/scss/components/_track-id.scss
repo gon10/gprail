@@ -1,0 +1,61 @@
+.track-id {
+  &__wrap {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 10px;
+    &--error {
+      .track-id {
+        border-color: $warning-lll;
+        background-color: rgba($warning-lllll,0.2);
+      }
+    }
+    &--disabled {
+      .track-id {
+        border-color: $grey-llll;
+        background-color: $white;
+        cursor: not-allowed;
+        &:hover,
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: $grey-llll;
+          box-shadow: none;
+        }
+        &__label {
+          color: $grey-ll;
+        }
+      }
+    }
+    &--no-label {
+      .input__help {
+        display: none;
+      }
+    }
+    &--no-margin {
+      margin: 0;
+    }
+  }
+  &__label {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: $grey-d;
+  }
+  &__option {
+    box-sizing: border-box;
+    padding: 4px;
+  }
+  &__placeholder {
+    box-sizing: border-box;
+    padding: 4px;
+    color: $grey-ll;
+  }
+  &__error {
+    color: $warning-m;
+  }
+}

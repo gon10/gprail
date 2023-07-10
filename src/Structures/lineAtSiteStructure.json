@@ -1,0 +1,68 @@
+{
+  "additionalSignals": "",
+  "lines": [
+    {
+      "lineName": "",
+      "lineElrInfo": [
+        {
+          "from": {
+            "elr": [],
+            "trackId": "",
+            "mileage": {
+              "totalYards": 0,
+              "milesYards": {
+                "miles": 0,
+                "yards": 0,
+                "displayValue": "0m 0yds"
+              },
+              "milesChains": {
+                "miles": 0,
+                "chains": 0,
+                "displayValue": "0m 0ch"
+              },
+              "km": {
+                "kilometres": 0,
+                "metres": 0,
+                "displayValue": "0 km"
+              }
+            }
+          },
+          "to": {
+            "elr": [],
+            "trackId": "",
+            "mileage": {
+              "totalYards": 0,
+              "milesYards": {
+                "miles": 0,
+                "yards": 0,
+                "displayValue": "0m 0yds"
+              },
+              "milesChains": {
+                "miles": 0,
+                "chains": 0,
+                "displayValue": "0m 0ch"
+              },
+              "km": {
+                "kilometres": 0,
+                "metres": 0,
+                "displayValue": "0 km"
+              }
+            }
+          }
+        }
+      ],
+      "speed": {
+        "units": "mph"
+      },
+      "signalPanel": [],
+      "protectionStatus": "",
+      "protectionLimits": {
+        "from": {},
+        "to": {},
+        "protectingSignals": ""
+      },
+      "direction": "",
+      "electrification": ""
+    }
+  ]
+}

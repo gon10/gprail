@@ -1,0 +1,403 @@
+{
+  "_id": {
+    "$oid": "641d66251bcb1d2e7b14d196"
+  },
+  "$schema": "https://schemas.on-trac.co.uk/internal/appConfig-1-0-0.json",
+  "service": "RailApps",
+  "name": "FE Test App - Line Blockage",
+  "description": "View and accept line blockage requests.",
+  "icon": "puzzle-piece",
+  "launchDisplay": "RECORDS",
+  "allCapabilities": [
+    "CREATE",
+    "READ",
+    "UPDATE"
+  ],
+  "appRoles": [{
+      "roleName": "Line Blockage Admin",
+      "capabilities": [
+        "CREATE",
+        "READ",
+        "UPDATE"
+      ]
+    },
+    {
+      "roleName": "Line Blockage Viewer",
+      "capabilities": [
+        "READ"
+      ]
+    }
+  ],
+  "appDocumentTypes": [{
+      "documentTypeName": "network-rail-lineBlockageRequest",
+      "documentSchemaURI": "https://schemas.on-trac.co.uk/documents/network-rail/line-blockage-request-0-0-2.json",
+      "statusValues": [
+        "draft",
+        "submitted",
+        "accepted",
+        "accepted with edits",
+        "rejected",
+        "cancelled"
+      ]
+    },
+    {
+      "documentTypeName": "network-rail-lineBlockageRequest",
+      "documentSchemaURI": "https://schemas.on-trac.co.uk/documents/network-rail/line-blockage-request-2-0-0.json",
+      "statusValues": [
+        "draft",
+        "submitted",
+        "accepted",
+        "accepted with edits",
+        "rejected",
+        "cancelled"
+      ]
+    }
+  ],
+  "railFormsConfig": {
+    "recordsViewConfig": {
+      "documentTypeName": "network-rail-lineBlockageRequest",
+      "columns": [{
+          "fieldName": "applicationId",
+          "columnTitle": "Ref",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 1,
+          "uiComponentName": "integerField"
+        },
+        {
+          "fieldNames": [
+            "lbRequesterUserProfile.userName",
+            "lbRequester.name"
+          ],
+          "columnTitle": "Requester",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 1,
+          "uiComponentName": "textField"
+        },
+        {
+          "fieldNames": [
+            "startDateTime",
+            "shifts.schedule.start"
+          ],
+          "columnTitle": "Start",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 2,
+          "uiComponentName": "dateField"
+        },
+        {
+          "fieldNames": [
+            "endDateTime",
+            "shifts.schedule.end"
+          ],
+          "columnTitle": "End",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 2,
+          "uiComponentName": "dateField"
+        },
+        {
+          "fieldNames": [
+            "workLocation",
+            "locationFrom.name",
+            "locationTo.name"
+          ],
+          "columnTitle": "Location",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 2,
+          "uiComponentName": "textField"
+        },
+        {
+          "fieldName": "blockedLines.lines",
+          "targetField": "lineName",
+          "columnTitle": "Lines",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 3,
+          "uiComponentName": "arrayField"
+        },
+        {
+          "fieldName": "blockedLines.lines",
+          "targetField": "lineElrInfo",
+          "columnTitle": "ELRs / Mileage",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 3,
+          "uiComponentName": "elrField"
+        },
+        {
+          "fieldNames": [
+            "blockedLines.lines",
+            "blockedLines.lines.signalPanel.name"
+          ],
+          "targetField": "protectionLimits.signalPanel",
+          "columnTitle": "Signal Panels",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 3,
+          "uiComponentName": "arrayField"
+        }
+      ],
+      "pagination": true,
+      "recordsPerPage": 20
+    },
+    "createUpdateConfig": {
+      "documentVersion": "https://schemas.on-trac.co.uk/documents/network-rail/line-blockage-request-2-0-0.json",
+      "formTitle": "Line Blockage",
+      "formDescription": "Manage Line Blockage Records",
+      "iconShape": "hexagon",
+      "pages": [{
+          "pageHeader": {
+            "pageTitle": "Location",
+            "pageDescription": "Where does this Line Blockage refer to?",
+            "pageNavigation": {
+              "link": "*",
+              "icon": "location-pin",
+              "title": "Location",
+              "disabled": false,
+              "active": false
+            }
+          },
+          "pageElements": [{
+              "uiComponentName": "documentLinkageField",
+              "boundFieldName": "planningAssistantArea",
+              "prompt": "Planning Assistant Area",
+              "helpText": "Planning Assistant Areas that receives this Line Blockage request",
+              "refDocCollection": "network-gbr-planningAssistantArea",
+              "isRequired": true,
+              "fetchFields": [
+                "title",
+                "_version"
+              ],
+              "queryFields": [
+                "title"
+              ],
+              "queryFilter": {
+                "status": "APPROVED"
+              },
+              "autoCompleteLimit": 6,
+              "isMultiSelect": false,
+              "fieldsToShow": [
+                "title"
+              ]
+            },
+            {
+              "uiComponentName": "documentLinkageField",
+              "boundFieldName": "locationFrom",
+              "prompt": "From Location",
+              "helpText": "The location name where this Line Blockage starts",
+              "refDocCollection": "network-gbr-saLocation",
+              "isRequired": true,
+              "fetchFields": [
+                "name",
+                "engineeringLocations",
+                "signalPanels"
+              ],
+              "queryFields": [
+                "name",
+                "aliases"
+              ],
+              "autoCompleteLimit": 6,
+              "isMultiSelect": false,
+              "fieldsToShow": [
+                "name"
+              ]
+            },
+            {
+              "uiComponentName": "documentLinkageField",
+              "boundFieldName": "locationTo",
+              "prompt": "To Location",
+              "helpText": "The location name where this Line Blockage ends",
+              "refDocCollection": "network-gbr-saLocation",
+              "isRequired": true,
+              "fetchFields": [
+                "name",
+                "engineeringLocations",
+                "signalPanels"
+              ],
+              "queryFields": [
+                "name",
+                "aliases"
+              ],
+              "autoCompleteLimit": 6,
+              "isMultiSelect": false,
+              "fieldsToShow": [
+                "name"
+              ]
+            }
+          ]
+        },
+        {
+          "pageHeader": {
+            "pageTitle": "Schedule",
+            "pageDescription": "Schedule",
+            "pageNavigation": {
+              "link": "shift",
+              "icon": "upload",
+              "title": "Schedule",
+              "disabled": false,
+              "active": false
+            }
+          },
+          "pageElements": [{
+            "uiComponentName": "shiftsField",
+            "boundFieldName": "shifts",
+            "documentCollection": "network-rail-lineBlockageRequest",
+            "adhoc": {
+              "enabled": true
+            },
+            "repeat": {
+              "enabled": "false"
+            },
+            "cyclical": {
+              "enabled": "false"
+            }
+          }]
+        },
+        {
+          "pageHeader": {
+            "pageTitle": "About",
+            "pageDescription": "About",
+            "pageNavigation": {
+              "link": "about",
+              "icon": "ruler-horizontal",
+              "title": "About",
+              "disabled": false,
+              "active": false
+            }
+          },
+          "pageElements": [
+            {
+              "uiComponentName": "autoBusinessReferenceField",
+              "boundFieldName": "businessRef",
+              "parts": [
+                  {
+                      "type": "text",
+                      "value": "P"
+                  },
+                  {
+                      "type": "planningYear"
+                  },
+                  {
+                      "type": "text",
+                      "value": "/"
+                  },
+                  {
+                      "type": "randomNumbers",
+                      "limit": "7"
+                  }
+              ]
+          },
+            {
+            "uiComponentName": "userField",
+            "boundFieldName": "lbRequester",
+            "prompt": "Line Blockage Requester",
+            "helpText": "The person requesting this line blockage",
+            "fetchFields": [
+              "name",
+              "email",
+              "tel",
+              "imdm.name",
+              "discipline.name",
+              "route.name"
+            ],
+            "queryFields": [
+              "name",
+              "email",
+              "tel",
+              "imdm.name"
+            ],
+            "fieldsToShow": [
+              "name",
+              "email",
+              "tel",
+              "imdm.name",
+              "discipline.name",
+              "route.name"
+            ],
+            "autoCompleteLimit": 6,
+            "isMultiSelect": false,
+            "isCurrentUserDefault": true,
+            "hidden": false
+          }]
+        },
+        {
+          "pageHeader": {
+            "pageTitle": "Lines",
+            "pageDescription": "What are the lines for this Line Blockage?",
+            "pageNavigation": {
+              "link": "lines",
+              "icon": "helmet-safety",
+              "title": "Lines",
+              "disabled": false,
+              "active": false
+            }
+          },
+          "pageElements": [{
+            "uiComponentName": "blockedLines",
+            "boundFieldName": "blockedLines",
+            "prompt": "Lines at Site",
+            "helpText": "Specify the protection limits for each line",
+            "showOpenLines": true,
+            "showDirection": true,
+            "showElectrification": true,
+            "showSpeed": true,
+            "showELRInfo": false,
+            "showAdditionalSignals": true,
+            "showDisconnectionPoints": true,
+            "showProtectionLimits": true,
+            "showAdditionalProtection": true
+          }]
+        },
+        {
+          "pageHeader": {
+            "pageTitle": "Protection Limits",
+            "pageDescription": "What are the protections for this Line Blockage?",
+            "pageNavigation": {
+              "link": "protection-lines",
+              "icon": "helmet-safety",
+              "title": "Protection Limits",
+              "disabled": false,
+              "active": false
+            }
+          },
+          "pageElements": [{
+            "uiComponentName": "blockedLines",
+            "boundFieldName": "blockedLines",
+            "prompt": "Lines at Site",
+            "helpText": "Specify the protection limits for each line",
+            "showOpenLines": true,
+            "showDirection": true,
+            "showElectrification": true,
+            "showSpeed": true,
+            "showELRInfo": false,
+            "showAdditionalSignals": true,
+            "showDisconnectionPoints": true,
+            "showProtectionLimits": true,
+            "showAdditionalProtection": true
+          }]
+        }
+      ]
+    },
+    "legacyReadViews": [{
+      "documentVersion": "https://schemas.on-trac.co.uk/documents/network-rail/line-blockage-request-0-0-2.json",
+      "formTitle": "Line Blockage",
+      "formDescription": "Manage Line Blockage Records",
+      "pages": [{
+        "pageElements": [{
+            "uiComponentName": "textField",
+            "boundFieldName": "name",
+            "prompt": "Additional Protection Type Name"
+          },
+          {
+            "uiComponentName": "integerField",
+            "boundFieldName": "order",
+            "prompt": "Order"
+          }
+        ]
+      }]
+    }]
+  }
+}

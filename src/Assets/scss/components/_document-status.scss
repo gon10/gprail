@@ -1,0 +1,100 @@
+.document-status {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 1px solid $grey-ll;
+  color: $grey-m;
+  background: $grey-llll;
+  padding: 2px 10px;
+  margin: 0;
+  border-radius: 10px;
+  text-transform: lowercase;
+  font-size: 12px;
+  line-height: 1em;
+  vertical-align: middle;
+  &--draft {
+    border-color: $secondary-lll;
+    color: $secondary-m;
+    background: $secondary-llll;
+    filter: hue-rotate(-20deg);
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      border-color: $secondary-ll;
+      color: $secondary-d;
+      background: $secondary-lll;
+    }
+  }
+  &--created {
+    border-color: $secondary-lll;
+    color: $secondary-m;
+    background: $secondary-llll;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      border-color: $secondary-ll;
+      color: $secondary-d;
+      background: $secondary-lll;
+    }
+  }
+  &--updated {
+    border-color: $success-ll;
+    color: $success-d;
+    background: $success-lllll;
+    filter: hue-rotate(30deg);
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      border-color: $success-l;
+      color: $success-dd;
+      background: $success-llll;
+    }
+  }
+  &--approved {
+    border-color: $success-ll;
+    color: $success-d;
+    background: $success-lllll;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      border-color: $success-l;
+      color: $success-dd;
+      background: $success-llll;
+    }
+  }
+  &--active {
+    border-color: $success-ll;
+    color: $success-d;
+    background: $success-lllll;
+    filter: hue-rotate(50deg);
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      border-color: $success-l;
+      color: $success-dd;
+      background: $success-llll;
+    }
+  }
+  &--withdrawn {
+    border-color: $warning-lll;
+    color: $warning-d;
+    background: $warning-lllll;
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+      border-color: $warning-ll;
+      color: $warning-dd;
+      background: $warning-llll;
+    }
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}

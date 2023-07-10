@@ -1,0 +1,163 @@
+.modal {
+  position: relative;
+  box-sizing: border-box;
+  background: $white;
+  border-radius: 2px;
+  box-shadow: 0 5px 4px 1px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  text-align: left;
+  overflow: hidden;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms linear 200ms, transform 200ms ease-in 200ms;
+
+  &__wrap {
+    box-sizing: border-box;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 200ms linear, transform 1ms linear;
+    &--close {
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 200ms linear 200ms, transform 1ms linear 400ms;
+      .modal {
+        opacity: 0;
+        transform: scale(0);
+        transition: opacity 300ms linear, transform 200ms ease-in;
+      }
+    }
+  }
+
+  &__header {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 40px 20px 10px;
+    background: $white;
+    background-image: radial-gradient(rgba($secondary-lllll,0.7) 0%, rgba($secondary-lllll,0.7) 49%, $white 50% ,$white 100%);
+    background-size: 300px 300px;
+    background-repeat: no-repeat;
+    background-position: -150px -150px;
+    color: $grey-dd;
+    border-bottom: 1px solid $grey-llll;
+  }
+ 
+  &__body {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px 0;
+  }
+
+  &__footer {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 20px 40px;
+    text-align: center;
+    background: $white;
+    background-image: radial-gradient(rgba($secondary-lllll,0.7) 0%, rgba($secondary-lllll,0.7) 49%, $white 50% ,$white 100%);
+    background-size: 300px 300px;
+    background-repeat: no-repeat;
+    background-position: right -150px bottom -150px;
+    border-top: 1px solid $grey-llll;
+    .button {
+      margin: 0 5px;
+    }
+  }
+
+  &__close {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    padding: 7px;
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    border-radius: 2px;
+    color: inherit;
+    cursor: pointer;
+    transition: 200ms ease-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: inherit;
+      background: rgba(0, 0, 0, 0.05);
+      transition: 180ms ease-in;
+    }
+  }
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    //text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+  }
+  .report-form {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+  &--success {
+    .modal {
+      &__header {
+        background-image: radial-gradient(rgba($success-lllll,0.3) 0%, rgba($success-lllll,0.3) 49%, $white 50% ,$white 100%);
+        color: $success-ddd;
+        border-bottom-color: $success-llll;
+      }
+      &__footer {
+        background-image: radial-gradient(rgba($success-lllll,0.3) 0%, rgba($success-lllll,0.3) 49%, $white 50% ,$white 100%);
+        border-top-color: $success-lllll;
+        .button--tertiary {
+          color: $success-dd;
+        }
+      }
+    }
+  }
+  &--alert {
+    .modal {
+      &__header {
+        background-image: radial-gradient(rgba($alert-llll,0.5) 0%, rgba($alert-llll,0.5) 49%, $white 50% ,$white 100%);
+        color: $alert-ddd;
+        border-bottom-color: $alert-llll;
+      }
+      &__footer {
+        background-image: radial-gradient(rgba($alert-llll,0.5) 0%, rgba($alert-llll,0.5) 49%, $white 50% ,$white 100%);
+        border-top-color: $alert-llll;
+        .button--tertiary {
+          color: $alert-ddd;
+        }
+      }
+    }
+  }
+  &--warning {
+    .modal {
+      &__header {
+        background-image: radial-gradient(rgba($warning-lllll,0.3) 0%, rgba($warning-lllll,0.3) 49%, $white 50% ,$white 100%);
+        color: $warning-dddd;
+        border-bottom-color: $warning-lllll;
+      }
+      &__footer {
+        background-image: radial-gradient(rgba($warning-lllll,0.3) 0%, rgba($warning-lllll,0.3) 49%, $white 50% ,$white 100%);
+        border-top-color: $warning-lllll;
+        .button--tertiary {
+          color: $warning-d;
+        }
+      }
+    }
+  }
+}

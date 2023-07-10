@@ -1,0 +1,1251 @@
+.PresetDateRangePicker {
+  &_panel {
+    padding: 0 22px 11px;
+  }
+
+  &_button {
+    position: relative;
+    height: 100%;
+    text-align: center;
+    background: 0 0;
+    border: 2px solid $primary-m;
+    color: $primary-m;
+    padding: 4px 12px;
+    margin-right: 8px;
+    font: inherit;
+    font-weight: 700;
+    line-height: normal;
+    overflow: visible;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:active {
+      outline: 0;
+    }
+
+    &__selected {
+      color: $white;
+      background: $primary-d;
+    }
+  }
+}
+
+.SingleDatePickerInput {
+  display: inline-block;
+  background-color: $white;
+
+  &__withBorder {
+    border: 1px solid $grey-ll;
+    border-radius: 3px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: $secondary-l;
+      box-shadow: 0 0 3px 0 $secondary-lll;
+      transition: 180ms ease-in;
+    }
+  }
+
+  &__rtl {
+    direction: rtl;
+  }
+
+  &__disabled {
+    color: $grey-l;
+    border-color: $grey-llll;
+    background-color: $white;
+    cursor: not-allowed;
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: $grey-llll;
+      box-shadow: none;
+    }
+  }
+
+  &__block {
+    display: block;
+  }
+
+  &__showClearDate {
+    padding-right: 30px;
+  }
+
+  &_clearDate {
+    background: 0 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 10px 0 5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    &__default {
+      &:focus {
+        background: #dbdbdb;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        background: #dbdbdb;
+        border-radius: 50%;
+      }
+    }
+
+    &__small {
+      padding: 6px;
+    }
+
+    &__hide {
+      visibility: hidden;
+    }
+
+    &_svg {
+      fill: #82888a;
+      height: 12px;
+      width: 15px;
+      vertical-align: middle;
+
+      &__small {
+        height: 9px;
+      }
+    }
+  }
+
+  &_calendarIcon {
+    background: 0 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 6px 8px 7px;
+    margin: 0 0 0 5px;
+
+    &_svg {
+      fill: #82888a;
+      height: 15px;
+      width: 14px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.SingleDatePicker {
+  position: relative;
+  display: inline-flex;
+
+  &__block {
+    display: block;
+  }
+
+  button+.DateInput__block {
+    width: calc(100% - 35px);
+  }
+
+  &_picker {
+    z-index: 100;
+    background-color: $white;
+    position: absolute;
+
+    &__rtl {
+      direction: rtl;
+    }
+
+    &__directionLeft {
+      left: 0;
+    }
+
+    &__directionRight {
+      right: 0;
+    }
+
+    &__portal {
+      background-color: rgba(0, 0, 0, .3);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    &__fullScreenPortal {
+      background-color: $white;
+    }
+  }
+
+  &_closeButton {
+    background: 0 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    z-index: 102;
+
+    &:focus {
+      color: darken(#cacccd, 10%);
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: darken(#cacccd, 10%);
+      text-decoration: none;
+    }
+
+    &_svg {
+      height: 15px;
+      width: 15px;
+      fill: #cacccd;
+    }
+  }
+}
+
+.DayPickerKeyboardShortcuts {
+  &_buttonReset {
+    background: 0 0;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:active {
+      outline: 0;
+    }
+  }
+
+  &_show {
+    width: 33px;
+    height: 26px;
+    position: absolute;
+    z-index: 102;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+
+    &__bottomRight {
+      bottom: 0;
+      right: 0;
+
+      &::before {
+        border-top: 26px solid transparent;
+        border-right: 33px solid $primary-d;
+        bottom: 0;
+        right: 0;
+      }
+
+      &:hover {
+        &::before {
+          border-right: 33px solid $primary-dd;
+        }
+      }
+    }
+
+    &__topRight {
+      top: 0;
+      right: 0;
+
+      &::before {
+        border-bottom: 26px solid transparent;
+        border-right: 33px solid $primary-m;
+        top: 0;
+        right: 0;
+      }
+
+      &:hover {
+        &::before {
+          border-right: 33px solid $primary-d;
+        }
+      }
+    }
+
+    &__topLeft {
+      top: 0;
+      left: 0;
+
+      &::before {
+        border-bottom: 26px solid transparent;
+        border-left: 33px solid $primary-m;
+        top: 0;
+        left: 0;
+      }
+
+      &:hover {
+        &::before {
+          border-left: 33px solid $primary-d;
+        }
+      }
+    }
+  }
+
+  &_showSpan {
+    color: $white;
+    position: absolute;
+
+    &__bottomRight {
+      bottom: 0;
+      right: 5px;
+    }
+
+    &__topRight {
+      top: 1px;
+      right: 5px;
+    }
+
+    &__topLeft {
+      top: 1px;
+      left: 5px;
+    }
+  }
+
+  &_panel {
+    overflow: auto;
+    background: $white;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 102;
+    padding: 22px;
+    margin: 33px;
+    text-align: left;
+  }
+
+  &_title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &_list {
+    list-style: none;
+    padding: 0;
+    font-size: 12px;
+    * {
+      display: inline-block;
+    }
+    .KeyboardShortcutRow {
+      padding: 0;
+      margin: 0 0 10px;
+      &_keyContainer {
+        border-radius: 3px;
+        background: $secondary-m;
+        color: $white;
+        padding: 5px 7px;
+        margin: 0 5px 0 0;
+        font-size: 14px;
+        line-height: 1em;
+        text-align: center;
+        min-width: 20px;
+      }
+      &_action {
+        display: inline;
+      }
+    }
+  }
+
+  &_closeSvg {
+    height: 15px;
+    width: 15px;
+    margin: 0;
+    fill: $primary-d;
+    transition: 200ms ease-out;
+
+    &:focus, 
+    &:hover {
+      transition: 180ms ease-in;
+      fill: $primary-lllll;
+    }
+  }
+
+  &_close {
+    box-sizing: border-box;
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    z-index: 102;
+    border-radius: 5px;
+    padding: 5px;
+    width: 27px;
+    height: 26px;
+    transition: 200ms ease-out;
+
+    &:active {
+      outline: 0;
+    }
+    &:hover {
+      background: $primary-d;
+      transition: 180ms ease-in;
+      .DayPickerKeyboardShortcuts_closeSvg {
+        transition: 180ms ease-in;
+        fill: $primary-lllll;
+      }
+    }
+  }
+}
+
+.CalendarDay {
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+
+  &:active {
+    outline: 0;
+  }
+
+  &__defaultCursor {
+    cursor: default;
+  }
+
+  &__default {
+    border: 1px solid #e4e7e7;
+    color: #484848;
+    background: $white;
+
+    &:hover {
+      background: #e4e7e7;
+      border: 1px solid #e4e7e7;
+      color: inherit;
+    }
+  }
+
+  &__hovered {
+    &_offset {
+      background: #f4f5f5;
+      border: 1px double #e4e7e7;
+      color: inherit;
+    }
+
+    &_span {
+      background: #b2f1ec;
+      border: 1px double #80e8e0;
+      color: #007a87;
+
+      &:hover {
+        background: #b2f1ec;
+        border: 1px double #80e8e0;
+        color: #007a87;
+      }
+
+      &:active {
+        background: #80e8e0;
+        border: 1px double #80e8e0;
+        color: #007a87;
+      }
+    }
+
+    &_start_first_possible_end {
+      background: #eceeee;
+      border: 1px double #eceeee;
+    }
+
+    &_start_blocked_min_nights {
+      background: #eceeee;
+      border: 1px double #e4e7e7;
+    }
+  }
+
+  &__outside {
+    border: 0;
+    background: $white;
+    color: #484848;
+
+    &:hover {
+      border: 0;
+    }
+  }
+
+  &__blocked {
+    &_minimum_nights {
+      background: $white;
+      border: 1px solid #eceeee;
+      color: #cacccd;
+
+      &:active {
+        background: $white;
+        color: #cacccd;
+      }
+
+      &:hover {
+        background: $white;
+        color: #cacccd;
+      }
+    }
+
+    &_calendar {
+      background: #cacccd;
+      border: 1px solid #cacccd;
+      color: #82888a;
+
+      &:active {
+        background: #cacccd;
+        border: 1px solid #cacccd;
+        color: #82888a;
+      }
+
+      &:hover {
+        background: #cacccd;
+        border: 1px solid #cacccd;
+        color: #82888a;
+      }
+    }
+
+    &_out_of_range {
+      background: $white;
+      border: 1px solid #e4e7e7;
+      color: #cacccd;
+
+      &:active {
+        background: $white;
+        border: 1px solid #e4e7e7;
+        color: #cacccd;
+      }
+
+      &:hover {
+        background: $white;
+        border: 1px solid #e4e7e7;
+        color: #cacccd;
+      }
+    }
+  }
+
+  &__highlighted_calendar {
+    background: #ffe8bc;
+    color: #484848;
+
+    &:active {
+      background: #ffce71;
+      color: #484848;
+    }
+
+    &:hover {
+      background: #ffce71;
+      color: #484848;
+    }
+  }
+
+  &__selected {
+    background: $primary-d;
+    border: 1px double $primary-d;
+    color: $white;
+
+    &:active {
+      background: $primary-d;
+      border: 1px double $primary-d;
+      color: $white;
+    }
+
+    &:hover {
+      background: $primary-d;
+      border: 1px double $primary-d;
+      color: $white;
+    }
+
+    &_span {
+      background: $primary-lll;
+      border: 1px double $primary-lll;
+      color: $white;
+
+      &:active {
+        background: $primary-l;
+        border: 1px double $primary-l;
+        color: $white;
+      }
+
+      &:hover {
+        background: $primary-l;
+        border: 1px double $primary-l;
+        color: $white;
+      }
+    }
+  }
+}
+
+.CalendarMonth {
+  background: $white;
+  text-align: center;
+  vertical-align: top;
+  user-select: none;
+
+  &_table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  &_verticalSpacing {
+    border-collapse: separate;
+  }
+
+  &_caption {
+    color: #484848;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 22px;
+    padding-bottom: 37px;
+    caption-side: initial;
+
+    &__verticalScrollable {
+      padding-top: 12px;
+      padding-bottom: 7px;
+    }
+  }
+}
+
+.CalendarMonthGrid {
+  background: $white;
+  text-align: left;
+  z-index: 0;
+
+  &__animating {
+    z-index: 100;
+  }
+
+  &__horizontal {
+    position: absolute;
+    left: 9px;
+  }
+
+  &__vertical {
+    margin: 0 auto;
+
+    &_scrollable {
+      margin: 0 auto;
+    }
+  }
+
+  &_month {
+    &__horizontal {
+      display: inline-block;
+      vertical-align: top;
+      min-height: 100%;
+    }
+
+    &__hideForAnimation {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &__hidden {
+      visibility: hidden;
+    }
+  }
+}
+
+.DayPickerNavigation {
+  position: relative;
+  z-index: 102;
+
+  &__horizontal {
+    height: 0;
+  }
+
+  &__verticalScrollable_prevNav {
+    z-index: 100;
+  }
+
+  &__verticalDefault {
+    position: absolute;
+    width: 100%;
+    height: 52px;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__verticalScrollableDefault {
+    position: relative;
+  }
+
+  &__bottom {
+    height: auto;
+  }
+
+  &__bottomDefault {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_button {
+    cursor: pointer;
+    user-select: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    &__default {
+      border: 1px solid #e4e7e7;
+      background-color: $white;
+      color: #757575;
+
+      &:focus {
+        border: 1px solid #c4c4c4;
+      }
+
+      &:hover {
+        border: 1px solid #c4c4c4;
+      }
+
+      &:active {
+        background: #f2f2f2;
+      }
+    }
+
+    &__disabled {
+      color: $grey-l;
+      border-color: $grey-llll;
+      background-color: $white;
+      cursor: not-allowed;
+      &:hover,
+      &:focus,
+      &:active {
+        outline: none;
+        border-color: $grey-llll;
+        box-shadow: none;
+      }
+    }
+
+    &__horizontalDefault {
+      position: absolute;
+      top: 18px;
+      line-height: .78;
+      border-radius: 3px;
+      padding: 6px 9px;
+    }
+
+    &__verticalDefault {
+      padding: 5px;
+      background: $white;
+      box-shadow: 0 4px 5px 0px rgba(0, 0, 0, 0.2);
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      height: 100%;
+      width: 50%;
+    }
+  }
+
+  &_bottomButton__horizontalDefault {
+    position: static;
+    margin: -10px 22px 30px;
+  }
+
+  &_leftButton__horizontalDefault {
+    left: 22px;
+  }
+
+  &_rightButton__horizontalDefault {
+    right: 22px;
+  }
+
+  &_nextButton {
+    &__verticalDefault {
+      border-left: 0;
+    }
+
+    &__verticalScrollableDefault {
+      width: 100%;
+    }
+  }
+
+  &_prevButton__verticalScrollableDefault {
+    width: 100%;
+  }
+
+  &_svg {
+    &__horizontal {
+      height: 19px;
+      width: 19px;
+      fill: #82888a;
+      display: block;
+    }
+
+    &__vertical {
+      height: 42px;
+      width: 42px;
+      fill: #484848;
+    }
+
+    &__disabled {
+      fill: $grey-llll;
+    }
+  }
+}
+
+.DayPicker {
+  background: $white;
+  position: relative;
+  text-align: left;
+
+  &__horizontal {
+    background: $white;
+  }
+
+  &__verticalScrollable {
+    height: 100%;
+  }
+
+  &__hidden {
+    visibility: hidden;
+  }
+
+  &__withBorder {
+    box-shadow:
+      0 4px 5px 0px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(0, 0, 0, .07);
+    border-radius: 3px;
+  }
+
+  &_portal {
+    &__horizontal {
+      box-shadow: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+
+    &__vertical {
+      position: initial;
+    }
+  }
+
+  &_focusRegion {
+    outline: 0;
+  }
+
+  &_calendarInfo__horizontal {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &_wrapper__horizontal {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &_weekHeaders {
+    position: relative;
+
+    &__horizontal {
+      margin-left: 9px;
+    }
+  }
+
+  &_weekHeader {
+    color: #757575;
+    position: absolute;
+    top: 62px;
+    z-index: 102;
+    text-align: left;
+
+
+    &__vertical {
+      left: 50%;
+    }
+
+    &__verticalScrollable {
+      top: 0;
+      display: table-row;
+      border-bottom: 1px solid #dbdbdb;
+      background: $white;
+      margin-left: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    &_ul {
+      list-style: none;
+      margin: 1px 0;
+      padding-left: 0;
+      padding-right: 0;
+      font-size: 14px;
+    }
+
+    &_li {
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  &_transitionContainer {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+
+    &__horizontal {
+      transition: height .2s ease-in-out;
+    }
+
+    &__vertical {
+      width: 100%;
+    }
+
+    &__verticalScrollable {
+      padding-top: 20px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      overflow-y: scroll;
+    }
+  }
+}
+
+.DateInput {
+  margin: 0;
+  padding: 0;
+  //background: $white;
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  flex-wrap: nowrap;
+  width: 130px;
+  vertical-align: middle;
+
+  &__small {
+    width: 97px;
+  }
+
+  &__block {
+    width: 100%;
+  }
+
+  &__disabled {
+    color: $grey-l;
+    border-color: $grey-llll;
+    background-color: $white;
+    cursor: not-allowed;
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: $grey-llll;
+      box-shadow: none;
+    }
+  }
+
+  &_input {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 8px;
+    margin: 0;
+    line-height: 18px;
+    //border: 1px solid $grey-ll;
+    border-radius: 3px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    transition: 200ms ease-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border: none;
+      box-shadow: none;
+      outline: none;
+    }
+
+    &__small {
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: .2px;
+      padding: 7px 7px 5px;
+    }
+
+    &__regular {
+      font-weight: auto;
+    }
+
+    &__readOnly {
+      user-select: none;
+    }
+
+    &__focused {
+      outline: none;
+      //border-color: $secondary-l;
+      //box-shadow: 0 0 3px 0 $secondary-lll;
+      transition: 180ms ease-in;
+    }
+
+    &__disabled {
+      color: $grey-l;
+      border-color: $grey-llll;
+      background-color: $white;
+      cursor: not-allowed;
+      &:hover,
+      &:focus,
+      &:active {
+        outline: none;
+        border-color: $grey-llll;
+        box-shadow: none;
+      }
+    }
+  }
+
+  &_screenReaderMessage {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  &_fang {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    left: 22px;
+    z-index: 102;
+    margin-top: 1px;
+  }
+
+  &_fangShape {
+    fill: $white;
+  }
+
+  &_fangStroke {
+    stroke: #dbdbdb;
+    fill: transparent;
+  }
+}
+
+.DateRangePickerInput {
+  background-color: $white;
+  display: inline-block;
+
+  &__disabled {
+    color: $grey-l;
+    border-color: $grey-llll;
+    background-color: $white;
+    cursor: not-allowed;
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: $grey-llll;
+      box-shadow: none;
+    }
+  }
+
+  &__withBorder {
+    border: 1px solid $grey-ll;
+    border-radius: 3px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: $secondary-l;
+      box-shadow: 0 0 3px 0 $secondary-lll;
+      transition: 180ms ease-in;
+    }
+  }
+
+  &__rtl {
+    direction: rtl;
+  }
+
+  &__block {
+    display: block;
+    .DateInput {
+      width: calc(50% - (35px + 30px)/2);
+    }
+  }
+
+  &__showClearDates {
+    padding-right: 30px;
+  }
+
+  &_arrow {
+    display: inline-block;
+    vertical-align: middle;
+    color: #484848;
+    margin: 0 10px 0 0;
+
+    &_svg {
+      vertical-align: middle;
+      fill: #484848;
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &_clearDates {
+    background: 0 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 10px 0 5px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    &__small {
+      padding: 6px;
+    }
+
+    &_default {
+      &:focus {
+        background: #dbdbdb;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        background: #dbdbdb;
+        border-radius: 50%;
+      }
+    }
+
+    &__hide {
+      visibility: hidden;
+    }
+
+    &_svg {
+      fill: #82888a;
+      height: 12px;
+      width: 15px;
+      vertical-align: middle;
+
+      &__small {
+        height: 9px;
+      }
+    }
+  }
+
+  &_calendarIcon {
+    background: 0 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 6px 8px 8px;
+    margin: 0 0 0 5px;
+
+    &_svg {
+      fill: #82888a;
+      height: 15px;
+      width: 14px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.DateRangePicker {
+  position: relative;
+  display: inline-block;
+
+  &__block {
+    display: block;
+  }
+
+  &_picker {
+    z-index: 100;
+    background-color: $white;
+    position: absolute;
+
+    &__rtl {
+      direction: rtl;
+    }
+
+    &__directionLeft {
+      left: 0;
+    }
+
+    &__directionRight {
+      right: 0;
+    }
+
+    &__portal {
+      background-color: rgba(0, 0, 0, .3);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+    &__fullScreenPortal {
+      background-color: $white;
+    }
+  }
+  &_closeButton {
+    background: 0 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    z-index: 102;
+  
+    &:focus {
+      color: darken(#cacccd, 10%);
+      text-decoration: none;
+    }
+  
+    &:hover {
+      color: darken(#cacccd, 10%);
+      text-decoration: none;
+    }
+  
+    &_svg {
+      height: 15px;
+      width: 15px;
+      fill: #cacccd;
+    }
+  }
+}

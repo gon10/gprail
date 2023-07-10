@@ -1,0 +1,198 @@
+.nav {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  &__ul {
+    box-sizing: border-box;
+    list-style: none;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: stretch;
+    padding: 0;
+    margin: 0;
+  }
+  &__li {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    //width: 25%;
+    &:last-child {
+      .nav__button {
+        border-right: 1px solid $grey-llll;
+      }
+    }
+  }
+  &__open-menu {
+    display: none;
+  }
+  &__button {
+    box-sizing: border-box;
+    display: block;
+    border-radius: 0;
+    border: none;
+    border-left: 1px solid $grey-llll;
+    color: $secondary-d;
+    background: $white;
+    width: 100%;
+    height: 100%;
+    min-height: 40px;
+    margin: 0;
+    padding: 13px;
+    font-size: 14px;
+    line-height: 1em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 200ms ease-out;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      color: $secondary-dd;
+      background: $secondary-lllll;
+      border-color: $secondary-lllll;
+      transition: 180ms ease-in;
+    }
+    &--active {
+      background: $white;
+      cursor: initial;
+      font-weight: 700;
+      &:hover,
+      &:active,
+      &:focus {
+        color: $secondary-dd;
+        background: $white;
+      }
+    }
+  }
+  &__icon {
+    display: inline-block;
+    padding: 0;
+    margin: 0 5px 0 0;
+  }
+  &__title {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+  }
+  &--admin {
+    .nav__li {
+      width: 20%;
+    }
+  }
+
+  &__user {
+    &__wrap {
+      box-sizing: border-box;
+      position: relative;
+      margin: 0 0 0 20px;
+    }
+    &__menutoggle {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 15px;
+      background: $secondary-llll;
+      color: $secondary-l;
+      padding: 8px 0;
+      margin: 0;
+      font-size: 14px;
+      line-height: 14px;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 200ms ease-out;
+      &:hover {
+        background: $secondary-lll;
+        color: $secondary-d;
+        transition: 180ms ease-in;
+      }
+    }
+    &__menu {
+      box-sizing: border-box;
+      display: block;
+      position: absolute;
+      z-index: 200;
+      right: 0;
+      background: $white;
+      color: $grey-m;
+      padding: 20px;
+      margin: 0;
+      min-width: 200px;
+      border: 1px solid $grey-lll;
+      border-radius: 4px;
+      box-shadow: 0 4px 5px 0 rgba(0,0,0,0.2);
+      transform-origin: top center;
+      transform: scaley(0);
+      transition: 200ms ease-out;
+      &--open {
+        transform: scaley(1);
+        transition: 200ms ease-in;
+      }
+    }
+    &__menu-item {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      color: $primary-d;
+      background: rgba($grey-llll,0.5);
+      padding: 5px 15px;
+      margin: 1px 0;
+      border-radius: 14px;
+      text-align: center;
+      transition: 220ms ease-out;
+      &:hover {
+        text-decoration: none;
+        color: $primary-dd;
+        background: rgba($grey-llll,1);
+        transition: 180ms ease-in;
+      }
+    }
+    &__divider {
+      margin: 10px 0;
+    }
+    &__details {
+      font-weight: 700;
+      line-height: 1em;
+      color: $grey-dd;
+      text-transform: uppercase;
+    }
+    &__email {
+      font-weight: 500;
+      color: $secondary-m;
+      text-transform: lowercase;
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .nav {
+    &__user {
+      &__menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 80px);
+        text-align: center;
+        border-radius: 0;
+        border-width: 0;
+        border-top-width: 1px;
+      }
+      &__menu-item {
+        padding: 10px 20px;
+        margin: 2.5px 0;
+        border-radius: 20px;
+      }
+    }
+  }
+}

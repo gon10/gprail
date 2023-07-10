@@ -1,0 +1,144 @@
+.evo-search-autocomplete {
+  &__wrap {
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 10px;
+    .wrapper {
+      padding: 0 0 0 0 !important;
+      z-index: unset !important;
+      > div {
+        //display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 5px 10px;
+        margin: 0;
+        font: normal 400 14px/20px 'Open Sans', sans-serif;
+        border: 1px solid $grey-ll;
+        border-radius: 4px;
+        outline: none;
+        transition: 200ms ease-out;
+        &:nth-of-type(2) {
+          padding: 0;
+          margin: 2px 0 0;
+          border: 1px solid $grey-lll;
+          z-index: 100;
+          background: $white;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+          outline: none;
+          border-color: $secondary-l;
+          box-shadow: 0 0 3px 0 $secondary-lll;
+          transition: 180ms ease-in;
+        }
+      }
+      div.line {
+        display: none;
+      }
+      ul {
+        padding: 0;
+      }
+      li {
+        padding: 2px 5px;
+        cursor: pointer;
+      }
+    }
+
+    &--error {
+      .wrapper {
+        > div { 
+          border-color: $warning-lll;
+          background-color: rgba($warning-lllll,0.2);
+        }
+      }
+    }
+    &--disabled {
+      .wrapper {
+        > div { 
+          color: $grey-l;
+          border-color: $grey-llll;
+          background-color: $white;
+          cursor: not-allowed;
+          &:hover,
+          &:focus,
+          &:active {
+            outline: none;
+            border-color: $grey-llll;
+            box-shadow: none;
+          }
+          input {
+            pointer-events: none;
+          }
+        }
+        svg {
+          fill: $grey-lll;
+        }
+      }
+      .evo-search-autocomplete__label {
+        color: $grey-ll;
+      }
+    }
+    &--no-label {
+      .input__help {
+        display: none;
+      }
+    }
+    &--no-margin {
+      margin: 0;
+    }
+  }
+  &__label {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20px 0 0;
+    margin: 0;
+    font: normal 400 14px/20px 'Open Sans', sans-serif;
+    color: $grey-d;
+  }
+  &__help {
+    display: block;
+    box-sizing: border-box;
+    position: absolute; 
+    right: 0;
+    top: 2px;
+    color: $secondary-lll;
+    cursor: help;
+    transition: 200ms ease-out;
+    &--active,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $secondary-dd;
+      transition: 180ms ease-in;
+    }
+    &-text {
+      display: block;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font: normal 400 12px/16px 'Open Sans', sans-serif;
+      color: $secondary-dd;
+      max-height: 0;
+      overflow: hidden;
+      transition: 200ms ease-out;
+      &--show {
+        margin: 4px 0 0;
+        max-height: 200px;
+        transition: 180ms ease-in;
+      }
+    }
+  }
+  &__error {
+    display: block;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 4px 0 0;
+    font: normal 400 12px/16px 'Open Sans', sans-serif;
+    color: $warning-m;
+  }
+}

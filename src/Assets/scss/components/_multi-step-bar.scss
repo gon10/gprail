@@ -1,0 +1,129 @@
+.multi-step-bar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  margin: 0 0 10px;
+  border: 1px solid $grey-lll;
+  background: rgba($grey-llll,0.4);
+  border-radius: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: 600;
+  text-transform: uppercase;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba($white,0.7);
+  &--square {
+    border-radius: 2px;
+  }
+  &__step {
+    box-sizing: border-box;
+    display: block;
+    padding: 0;
+    margin: 0;
+    &--disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    &--active {
+      pointer-events: none;
+      .multi-step-bar {
+        &__link {
+          color: $secondary-m;
+        }
+        &__icon {
+          transform: scale(1.05);
+          transition: 200ms ease-out;
+          &__wrap {
+            color: $secondary-l;
+            &.circle,
+            &.square,
+            &.hexagon {
+              filter: drop-shadow(0 0 2px $secondary-ll) contrast(110%);
+            }
+          }
+        }
+      }
+    }
+  }
+  &__link {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 120px;
+    padding: 5px;
+    margin: 0;
+    color: $grey-dd;
+    text-decoration: none;
+    transition: 200ms ease-out;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      color: $primary-m;
+      transition: 180ms ease-in;
+      .multi-step-bar {
+        &__link {
+          color: $primary-m;
+          transition: 180ms ease-in;
+        }
+        &__icon {
+          transform: scale(1.05);
+          transition: 180ms ease-in;
+          &__wrap {
+            color: $primary-m;
+            transition: 180ms ease-in;
+            &.circle,
+            &.square,
+            &.hexagon {
+              filter: drop-shadow(0 0 2px $primary-ll) contrast(110%);
+            }
+          }
+        }
+      }
+    }
+  }
+  &__icon {
+    transition: 200ms ease-out;
+    &__wrap {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      line-height: 1em;
+      padding: 5px;
+      margin: 0;
+      width: 40px;
+      height: 40px;
+      color: $grey-d;
+      border-radius: 2px;
+      transition: 200ms ease-out;
+        &.circle {
+          background: $grey-llll;
+          border: 1px solid $grey-l;
+          border-radius: 20px;
+          box-shadow: 
+            inset 0 1px 1px 0 rgba($white,0.7);
+        }
+        &.square {
+          background: $grey-llll;
+          border: 1px solid $grey-l;
+          box-shadow: 
+            inset 0 1px 1px 0 rgba($white,0.7);
+        }
+        &.hexagon {
+          box-shadow: none;
+          background: url(/assets/img/hexagon.png);
+        }
+    }
+  }
+}

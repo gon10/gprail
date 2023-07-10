@@ -1,0 +1,233 @@
+$border-color: $grey-lll;
+$border-color-hover: $secondary-lll;
+$border-color-focus: $secondary-ll;
+$border-color-active: $secondary-l;
+
+$border-color-success: $success-l;
+$border-color-alert: $alert-l;
+$border-color-warning: $warning-lllll;
+
+$border-size: 1px;
+$border-style: solid;
+$base-radius: 2px;
+$rounded-radius: 10px;
+
+.image {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+
+  &__wrap {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border: $border-size $border-style transparent;
+    border-radius: $base-radius;
+    outline: none;
+    overflow: hidden;
+    transition: 200ms ease-out;
+
+    &--borders {
+      border: $border-size $border-style $border-color;
+    }
+
+    &--rounded {
+      border-radius: $rounded-radius;
+    }
+
+    &--disabled {
+      &::before {
+        content: "";
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: $grey-llll;
+        opacity: 0.5;
+        position: absolute;
+        z-index: 1;
+        cursor: not-allowed;
+      }
+    }
+
+    &--fade {
+      transition: 180ms ease-in;
+      opacity: 0.5;
+    }
+
+    &--hovers {
+      cursor: pointer;
+      &:hover {
+        border: $border-size $border-style $border-color-hover;
+        transition: 180ms ease-in;
+      }
+      &:focus {
+        border: $border-size $border-style $border-color-focus;
+        transition: 180ms ease-in;
+      }
+      &:active {
+        border: $border-size $border-style $border-color-active;
+        transition: 180ms ease-in;
+      }
+    }
+
+    &--selected {
+      border: $border-size $border-style $border-color-active;
+      box-shadow: 
+        inset 0 0 0 1px rgba($border-color-active, 1),
+        0 2px 4px 0 rgba($black, 0.2);
+      transition: 180ms ease-in;
+    }
+
+    &--success {
+      border: $border-size $border-style $border-color-success;
+      transition: 180ms ease-in;
+    }
+
+    &--alert {
+      border: $border-size $border-style $border-color-alert;
+      transition: 180ms ease-in;
+    }
+
+    &--error,
+    &--warning {
+      border: $border-size $border-style $border-color-warning;
+      transition: 180ms ease-in;
+    }
+
+    &--size {
+      &-150, 
+      &-thumb {
+        width: 150px;
+        height: 150px;
+      }
+      &-360,
+      &-mobile {
+        width: 360px;
+        height: 360px;
+      }
+      &-480 {
+        width: 480px;
+        height: 480px;
+      }
+      &-700 {
+        width: 700px;
+        height: 700px
+      }
+      &-768,
+      &-tablet {
+        width: 768px;
+        height: 768px;
+      }
+      &-1024,
+      &-regular {
+        width: 1024px;
+        height: 768px;
+      }
+      &-1400 {
+        width: 1400px;
+        height: 900px;
+      }
+      &-1920,
+      &-hd {
+        width: 1920px;
+        height: 1024px;
+      }
+      &-original {
+        overflow: auto;
+        .image {
+          width: unset;
+        }
+      }
+      &-fullwidth {
+        width: 100%;
+        //height: 100vh;
+      }
+    }
+  }
+  &--error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $warning-lllll;
+    &__icon {
+      font-size: 40px;
+    }
+    p {
+      text-align: center;
+      padding: 10px 20px 0;
+      margin: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------------------- 
+// Image Plugins 
+// ----------------------------------------------------------------- 
+
+.image {
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    background: linear-gradient(to bottom, rgba($black,0.1), rgba($black, 0.9));
+    color: $white;
+    transform: translateY(100%);
+    transition: 200ms ease-out;
+    
+    &__title {
+      margin: 0 0 3px;
+      padding: 0;
+    }
+    &__alt {
+      color: $grey-llll;
+      margin: 0;
+      padding: 0;
+      font-size: 0.8em;
+      line-height: 1.1em;
+    }
+    &__icon {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      line-height: 20px;
+      opacity: 0.7;
+    }
+  }
+  &__wrap {
+    &:hover,
+    &:focus {
+      .image {
+        &__title {
+          transform: translateY(0%);
+          transition: 180ms ease-in;
+        }
+      }
+    }
+  }
+}

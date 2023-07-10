@@ -1,0 +1,76 @@
+.mileage {
+  &__wrap {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 20px;
+    > div {
+      width: calc(33.33% - 40px/3);
+    }
+    .input {
+      &__help {
+        z-index: 2;
+        &-text {
+          width: 100%;
+        }
+      }
+      &__error {
+        width: 100%;
+      }
+    }
+    &--disabled {
+      .mileage {
+        &__label {
+          color: $grey-ll;
+        }
+      }
+    }
+    &--no-label {
+      .input__help {
+        display: none;
+      }
+    }
+    &--no-margin {
+      margin: 0;
+    }
+    &--no-units {
+      > div {
+        width: calc(50% - 20px/2);
+      }
+    }
+    &--single-field {
+      > div {
+        width: calc(50% - 20px/2);
+      }
+      &.mileage__wrap--no-units {
+        > div {
+          width: 100%;
+        }
+      }
+    }
+    .input__label {
+      text-transform: capitalize;
+    }
+  }
+  &__label {
+    width: 100%;
+    font-weight: 700;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .mileage {
+    &__wrap {
+      flex-direction: column;
+      gap: 0 20px;
+      > div {
+        width: 100%;
+      }
+    }
+  }
+}

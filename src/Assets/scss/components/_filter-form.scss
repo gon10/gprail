@@ -1,0 +1,60 @@
+.filter-form {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid $grey-lll;
+  border-radius: 2px;
+  background: rgba($grey-llll,0.2);
+  padding: 20px;
+  margin: 0 0 20px;
+  &__title {
+    font-size: 20px;
+    line-height: 1em;
+    margin: 0 0 10px;
+  }
+  &__group {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0 0 10px;
+    .select__wrap,
+    .input__wrap {
+      width: calc(25% - 60px/4);
+    }
+    .checkbox__wrap {
+      width: calc(25% - 60px/4);
+    }
+  }
+  &__submit {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 899px) {
+  .filter-form {
+    .select__wrap,
+    .input__wrap {
+      width: calc(50% - 10px);
+    }
+    .checkbox__wrap {
+      width: calc(50% - 20px/2);
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .filter-form {
+    .select__wrap,
+    .input__wrap {
+      width: 100%;
+    }
+    .checkbox__wrap {
+      width: 100%;
+    }
+  }
+}

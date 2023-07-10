@@ -1,0 +1,116 @@
+.editable-document-linkage {
+  box-sizing: border-box;
+  width: 100%;
+
+  &__label {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0 0 5px;
+    padding: 0 20px 0 0;
+    color: $grey-d;
+    text-transform: capitalize
+  }
+
+  &__document {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    margin: 0 0 20px;
+    display: block;
+    border: 1px solid $grey-lll;
+    border-radius: 16px;
+    background: $white;
+  }
+
+  &--condensed {
+    .editable-document-linkage {
+      &__document {
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        padding: 0 0 10px;
+        margin: 0 0 15px;
+        display: block;
+        border: none;
+        border-bottom: 1px solid $grey-lll;
+        border-radius: 0;
+        background: none;
+      }
+      &__label {
+        padding: 0 0 10px;
+        margin: 0 0 15px;
+        border-bottom: 1px solid $grey-lll;
+      }
+    }
+
+    .field-array {
+      &__wrap {
+        border: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0 10px;
+
+        .input__help {
+          top: 0;
+          right: 0;
+        }
+      }
+
+      &__label {
+        width: 100%;
+        margin: 0;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      &__content {
+        &__item {
+          position: relative;
+          box-sizing: border-box;
+          margin: 0;
+          width: auto;
+          margin: 0 0 10px;
+          > div {
+            box-sizing: border-box;
+            width: auto;
+            .input {
+              box-sizing: border-box;
+              width: auto;
+              padding-right: 40px;
+            }
+          }
+          > .button--secondary {
+            position: absolute;
+            right: 0;
+            width: 32px;
+            padding: 0 5px;
+            border: none;
+            background: transparent;
+            border-left: 1px solid $grey-lll;
+          }
+        }
+      }
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    .elr-segment-read-only__wrap p {
+      margin: 0 0 5px;
+    }
+  }
+
+}

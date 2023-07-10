@@ -1,0 +1,146 @@
+{
+    "_id": {
+        "$oid": "63e1289c936c9f2e42c61f92"
+    },
+    "$schema": "https://schemas.on-trac.co.uk/internal/appConfig-1-0-0.json",
+    "service": "RailApps",
+    "name": "FE test app: Display Cards",
+    "description": "Use this app to view the Signal Panels",
+    "launchDisplay": "RECORDS",
+    "icon": "map-marked-alt",
+    "allCapabilities": [
+        "READ",
+        "UPDATE"
+    ],
+    "appRoles": [{
+        "roleName": "Signal Panels Viewer",
+        "capabilities": [
+            "READ",
+            "UPDATE"
+        ]
+    }],
+    "appDocumentTypes": [{
+        "documentTypeName": "network-gbr-signalPanel",
+        "documentSchemaURI": "https://schemas.on-trac.co.uk/documents/network-gbr/signalPanel-1-0-0.json",
+        "statusValues": [
+            "DRAFT",
+            "APPROVED",
+            "WITHDRAWN"
+        ]
+    }],
+    "railFormsConfig": {
+        "recordsViewConfig": {
+            "documentTypeName": "network-gbr-signalPanel",
+            "columns": [{
+                    "fieldName": "name",
+                    "columnTitle": "Name",
+                    "sortable": true,
+                    "defaultSortOrder": "ASC",
+                    "defaultSortSequence": 1,
+                    "uiComponentName": "textField"
+                },
+                {
+                    "fieldName": "planningAssistantArea[0].title",
+                    "columnTitle": "Planning Assistant Area Location",
+                    "sortable": true,
+                    "defaultSortOrder": "ASC",
+                    "defaultSortSequence": 2,
+                    "uiComponentName": "textField"
+                }
+            ],
+            "pagination": true,
+            "recordsPerPage": 20
+        },
+        "createUpdateConfig": {
+            "formTitle": "Signal Panels",
+            "formDescription": "",
+            "pages": [{
+                "pageElements": [{
+                        "uiComponentName": "cardDeck",
+                        "disabled": false,
+                        "cards": [{
+                            "uiComponentName": "card",
+                            "boundFieldName": "signalPanel[0]",
+                            "cardTitleField": "name",
+                            "cardSubTitleField": "externalPhone",
+                            "cardHeaderIcon": "signalBox",
+                            "disabled": false,
+                            "cardContent": [{
+                                "cardList": [{
+                                        "boundField": "controlEmail",
+                                        "label": "Control Email",
+                                        "fieldIcon": "envelope",
+                                        "linkType": "email"
+                                    },
+                                    {
+                                        "boundField": "controlFax",
+                                        "label": "Control Fax",
+                                        "fieldIcon": "fax"
+                                    },
+                                    {
+                                        "boundField": "effectiveDates",
+                                        "label": "Effective Dates",
+                                        "fieldIcon": "calendar",
+                                        "fieldType": "dateRange"
+                                    },
+                                    {
+                                        "boundField": "email",
+                                        "label": "Email",
+                                        "fieldIcon": "envelope",
+                                        "linkType": "email"
+                                    },
+                                    {
+                                        "boundField": "externalPhone",
+                                        "label": "External Phone",
+                                        "fieldIcon": "phone",
+                                        "linkType": "phone"
+                                    },
+                                    {
+                                        "boundField": "fax",
+                                        "label": "Fax",
+                                        "fieldIcon": "fax"
+                                    },
+                                    {
+                                        "boundField": "internalPhone",
+                                        "label": "Internal Phone",
+                                        "fieldIcon": "phone",
+                                        "linkType": "phone"
+                                    },
+                                    {
+                                        "boundField": "limitations",
+                                        "label": "Limitations"
+                                    },
+                                    {
+                                        "boundField": "name",
+                                        "label": "Name"
+                                    },
+                                    {
+                                        "boundField": "openingHours",
+                                        "label": "Opening Hours",
+                                        "fieldIcon": "clock"
+                                    },
+                                    {
+                                        "boundField": "planningAssistantArea",
+                                        "label": "Planning Assistant Area",
+                                        "fieldIcon": "pin",
+                                        "fieldType": "documentLinkage",
+                                        "fieldsToDisplay": ["title"]
+                                    },
+                                    {
+                                        "boundField": "routeSuperUserEmail",
+                                        "label": "Route Super-User Email",
+                                        "fieldIcon": "envelope",
+                                        "linkType": "email"
+                                    }
+                                ]
+                            }],
+                            "cardFooter": false,
+                            "cardWidth": 33
+                        }]
+                    }
+
+                ]
+            }]
+        }
+    }
+}

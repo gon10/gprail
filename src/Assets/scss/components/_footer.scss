@@ -1,0 +1,17 @@
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0;
+  padding: 20px 20px 0;
+  &__p {
+    box-sizing: border-box;
+    color: $grey-ll;
+  }
+  &__a {
+    color: $primary-ll;
+  }
+}

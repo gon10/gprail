@@ -1,0 +1,46 @@
+{
+  "from": {
+    "elr": [],
+    "trackId": "1100",
+    "mileage": {
+      "totalYards": "",
+      "milesYards": {
+        "miles": "",
+        "yards": "",
+        "displayValue": ""
+      },
+      "milesChains": {
+        "miles": "",
+        "chains": "",
+        "displayValue": ""
+      },
+      "km": {
+        "kilometres": "",
+        "metres": "",
+        "displayValue": ""
+      }
+    }
+  },
+  "to": {
+    "elr": [],
+    "trackId": "",
+    "mileage": {
+      "totalYards": "",
+      "milesYards": {
+        "miles": "",
+        "yards": "",
+        "displayValue": ""
+      },
+      "milesChains": {
+        "miles": "",
+        "chains": "",
+        "displayValue": ""
+      },
+      "km": {
+        "kilometres": "",
+        "metres": "",
+        "displayValue": ""
+      }
+    }
+  }
+}
