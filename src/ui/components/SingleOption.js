@@ -5,7 +5,6 @@ import Radio from "../base/Radio";
 import RadioGroup from "../base/RadioGroup";
 
 export default function SingleOption({ register, methods, ...props }) {
-  console.log("props", props)
   const [thisId] = useState(_uniqueId());
   const id = props.id ? props.id : thisId;
 
@@ -33,7 +32,7 @@ export default function SingleOption({ register, methods, ...props }) {
 
   let value = null;
   if(methods){
-    value=methods.getValues(props.name)
+    value=methods.getValues(props.name) || props.defaultValue;
   }
 
   let selectProps = {

@@ -5,7 +5,7 @@ export default function Form({ defaultValues, children, onSubmit, ...props }) {
   const { getValues, setValue } = useForm();
   const methods = useForm({ 
     defaultValues,
-    mode: "onSubmit",
+    mode: "onChange",
     reValidateMode: "onChange"
   });
   console.log("defaultValues", defaultValues)
@@ -26,6 +26,11 @@ export default function Form({ defaultValues, children, onSubmit, ...props }) {
    */
   const modifySubmitData = (data, target) => {
     const values = getValues()
+    let error = methods.getFieldState();
+    let isValid = methods.formState.isValid
+    console.log('error', error)
+    console.log('isValid', isValid)
+    if(isValid)
     onSubmit({ ...data, ...values }, target)
   }
 

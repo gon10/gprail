@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from '../base/InputRhf';
 import _uniqueId from 'lodash/uniqueId';
-import { DateTimeRangeWrap } from './DateTimeRange';
 import SingleOption from './SingleOption';
 import { useRef } from 'react';
 import OutsideClick from '../../Helpers/OutsideClick'
-import { faSearch, faInfoCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { changeValueByPath } from '../../Helpers/utils';
 
@@ -13,13 +12,18 @@ import { changeValueByPath } from '../../Helpers/utils';
 export function DurationField(props) {
     const ref = useRef();
   const [showHelp, setShowHelp] = useState(false);
-  const [isUnique, setIsUnique] = useState(true);
   const [thisId] = useState(_uniqueId())
   const id = /*props.id ? props.id :*/ thisId;
 
   OutsideClick(ref, () => setShowHelp(false));
 
-  let hasError = props.error;
+  let hasError = "";
+  // if (props.methods && props.methods.getFieldState && props.methods.getFieldState(props.name) && props.methods.getFieldState(props.name).error) {
+  //   hasError = props.methods.getFieldState(props.name).error
+  // }
+  // console.log('hasError', hasError)
+
+  // let hasError = props.error;
 
     let classProps = ['input__wrap'];
     if (props.disabled) { classProps.push('input__wrap--disabled') }
@@ -59,7 +63,16 @@ export function DurationField(props) {
       }
       {props.helpText ? <FontAwesomeIcon icon={faInfoCircle} className={showHelp ? "input__help input__help--active" : "input__help"} onClick={() => setShowHelp(true)} /> : ""}
         <input
-         
+        //  {...props.register(props.name, {
+        //   required: inputProps.required,
+        //   // minLength: { value: props.minLength, message: "Please enter more characters" },
+        //   // maxLength: { value: props.maxLength, message: "Please enter less characters" },
+        //   // type: props.type ? props.type : "text",
+        //   // valueAsNumber: (props.type === "number") ? true : false,
+        //   //valueAsDate: (props.type === "datetime-local")? true : false,
+        //   validate: props.validationObj,
+        // }
+        // )}
           {...inputProps}
         />
       {props.helpText ? <p className={showHelp ? "input__help-text input__help-text--show" : "input__help-text"}>
@@ -106,7 +119,6 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
         id: id+"start",
         type: "datetime-local",
         className: classProps,
-        required: props.required ? props.required : false,
         disabled: props.disabled ? props.disabled : false,
         readOnly: props.readOnly ? props.readOnly : false,
         noLabel: props.noLabel ? props.noLabel : false,
@@ -121,7 +133,9 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
         register: register,
         methods: methods,
         errors: errors,
-        fullWidth: true
+        fullWidth: true,
+        setData: props.setData ? props.setData : null,
+        required:true
     };
 
     let durationHrsInputProps = {
@@ -130,7 +144,7 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
         id: id+"durationHours",
         type: "number",
         className: classProps,
-        required: props.required ? props.required : false,
+        required: true,
         disabled: props.disabled ? props.disabled : false,
         readOnly: props.readOnly ? props.readOnly : false,
         noLabel: props.noLabel ? props.noLabel : false,
@@ -154,7 +168,7 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
         id: id+"durationMins",
         type: "number",
         className: classProps,
-        required: props.required ? props.required : false,
+        required: true,
         disabled: props.disabled ? props.disabled : false,
         readOnly: props.readOnly ? props.readOnly : false,
         noLabel: props.noLabel ? props.noLabel : false,
@@ -181,7 +195,6 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
         type: "datetime-local",
         className: classProps,
         required: props.required ? props.required : false,
-        disabled: props.disabled ? props.disabled : false,
         readOnly: props.readOnly ? props.readOnly : false,
         noLabel: props.noLabel ? props.noLabel : false,
         noMargin: props.noMargin ? props.noMargin : false,
@@ -195,35 +208,78 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
         register: register,
         methods: methods,
         errors: errors,
-        fullWidth: true
+        fullWidth: true,
+        disabled: true
     };
+
+    let validationObj = {};
+    validationObj.isBefore = (duration) => {
+      console.log('duration isbefore...', duration)
+      if (!duration) {
+        return false;
+      }
+      return true;
+    };
+
+    useEffect(() => {
+      let values;
+      if(methods){
+        values = methods.getValues();
+      if(!methods.getValues(`${props.name}[0].schedule.duration`)){
+        changeValueByPath(values, `${props.name}[0].schedule.duration`, "P0H0M");
+      }
+      if(!methods.getValues(`${props.name}[0].type`)){
+        changeValueByPath(values, `${props.name}[0].type`, "ad-hoc");
+      }
+
+      props.setData(values);
+    }
+    }, [])
+    
 
     let durationVal;
     if(methods){
       durationVal=methods.getValues(`${props.name}[0].schedule.duration`);
+      
     }
-    console.log('`${props.name}[0].schedule.duration`', `${props.name}[0].schedule.duration`)
-    console.log("durationVal", durationVal)
+
 
   
-    const handleHoursChange = (event) => {
-      const hours = event.target.value;
-      let dur;
+    let startDateVal
       if(methods){
-        dur=methods.getValues(`${props.name}[0].schedule.duration`);
+        startDateVal=methods.getValues(`${props.name}[0].schedule.start`);
       }
-      const updatedDuration = dur.replace(/(\d+)H/, `${hours}H`);
+      console.log("startDateVal", startDateVal)
+    const handleHoursChange = (event) => {
+      let hours = event.target.value.replace(/^0/, '');
+      if (isNaN(hours) || hours < 0) {
+        hours = 0;
+      }
+      let duration;
+      if(methods){
+        duration=methods.getValues(`${props.name}[0].schedule.duration`) || "P0H0M";
+
+      }
+      const updatedDuration = duration.replace(/(\d*)H/, `${hours}H`);
       let values = methods.getValues();
       changeValueByPath(values, `${props.name}[0].schedule.duration`, updatedDuration);
+      
+      const match = updatedDuration.match(/(\d+)H(\d+)M/);
+      if (match && startDateVal) {
+        const hours = parseInt(match[1]);
+        const minutes = parseInt(match[2]);
+        const updatedEndDateTime = new Date(startDateVal);
+        updatedEndDateTime.setHours(updatedEndDateTime.getHours() +1  + hours);
+        updatedEndDateTime.setMinutes(updatedEndDateTime.getMinutes() + minutes);
+        changeValueByPath(values, `${props.name}[0].schedule.end`, updatedEndDateTime.toISOString().slice(0, -1));
+        changeValueByPath(values, `dateCompletedBy`, updatedEndDateTime.toISOString().slice(0, -1));
+      }
       props.setData(values);
     };
   
     const handleMinutesChange = (event) => {
-      const minutes = event.target.value;
-      
+      let minutes = event.target.value.replace(/^0/, '');
       if (isNaN(minutes) || minutes < 0) {
-        console.log('minutes', minutes);
-      console.log('      isNaN(minutes)',       isNaN(minutes))
         minutes = 0;
       } else if (minutes > 59) {
         minutes = 59;
@@ -231,44 +287,53 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
       let duration;
       
       if(methods){
-        duration=methods.getValues(`${props.name}[0].schedule.duration`);
+        duration=methods.getValues(`${props.name}[0].schedule.duration`)  || "P0H0M";
       }
-      const updatedDuration = duration.replace(/(\d+)M/, `${minutes}M`);
+      const updatedDuration = duration.replace(/(\d*)M/, `${minutes}M`);
       let values = methods.getValues();
       changeValueByPath(values, `${props.name}[0].schedule.duration`, updatedDuration);
-      props.setData(values);
-    };
-
-    const handleUpdateEndDate = () => {
-      let startDateVal, duration;
+      let startDateVal
       if(methods){
         startDateVal=methods.getValues(`${props.name}[0].schedule.start`);
-        duration=methods.getValues(`${props.name}[0].schedule.duration`);
       }
-  
-      const match = duration.match(/(\d+)H(\d+)M/);
+      const match = updatedDuration.match(/(\d+)H(\d+)M/);
       if (match) {
         const hours = parseInt(match[1]);
         const minutes = parseInt(match[2]);
         const updatedEndDateTime = new Date(startDateVal);
-        updatedEndDateTime.setHours(updatedEndDateTime.getHours() + hours);
+        updatedEndDateTime.setHours(updatedEndDateTime.getHours() +1 + hours);
         updatedEndDateTime.setMinutes(updatedEndDateTime.getMinutes() + minutes);
-  
-        let values = methods.getValues();
-        changeValueByPath(values, `${props.name}[0].schedule.end`, updatedEndDateTime);
-        props.setData(values);
+        changeValueByPath(values, `${props.name}[0].schedule.end`, updatedEndDateTime.toISOString().slice(0, -1));
+        changeValueByPath(values, `dateCompletedBy`, updatedEndDateTime.toISOString().slice(0, -1));
       }
+      props.setData(values);
     };
   
     const extractHours = () => {
-      const match = durationVal.match(/(\d+)H/);
+      const match = durationVal ? durationVal.match(/(\d+)H/) : null;
       return match ? match[1] : '0';
     };
   
     const extractMinutes = () => {
-      const match = durationVal.match(/(\d+)M/);
+      const match = durationVal ? durationVal.match(/(\d+)M/) : null;
       return match ? match[1] : '0';
     };
+
+    useEffect(() => {
+      if(methods){
+        console.log('register...durationVal', durationVal)
+        register(`${props.name}[0].schedule.duration`, {value:durationVal, validate: validationObj });
+        let error = methods.getFieldState(`${props.name}[0].schedule.duration`);
+        console.log('error', error)
+        if(!error.error && extractHours()===0 && extractMinutes()===0){
+          methods.setError(`${props.name}[0].schedule.duration`, { "type":"type", "message":"message" });
+        }
+      }
+    })
+
+    // let durationValidationObj = {};
+
+    // durationValidationObj.hasDuration = value => {console.log('value',props.name, value); if(!extractHours() && !extractMinutes()) {return "Please define a duration"} else return true}
 
   return (
     <>
@@ -285,8 +350,9 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
           {label: "Ad-hoc", value: "ad-hoc"},
           {label: "Repeat", value: "Repeat"},
         ]}
+        // defaultValue={{label: "Ad-hoc", value: "ad-hoc"}}
         setData={props.setData}
-      //   required 
+        required 
         />
       <Input
           {...startDateTimeInputProps}
@@ -295,10 +361,15 @@ export default function ShiftsField({ control, register, methods, errors, ...pro
           {...durationHrsInputProps}
           value={extractHours()}
           onChange={handleHoursChange}
+          // validationObj={durationValidationObj}
+          disabled={startDateVal ? false : true} 
       />
       <DurationField
-          {...durationMinsInputProps}value={extractMinutes()}
+          {...durationMinsInputProps}
+          value={extractMinutes()}
           onChange={handleMinutesChange}
+          // validationObj={durationValidationObj}
+          disabled={startDateVal ? false : true} 
       />
       <Input
           {...endDateTimeInputProps}

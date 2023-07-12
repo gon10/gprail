@@ -28,6 +28,7 @@ import BusinessRef from "../../components/BusinessRef";
 import { formatDate } from "../../../Helpers/StringHelpers";
 import UserFieldDetails from "../../components/UserFieldDetails";
 import ShiftsField from "../../components/ShiftsField";
+import DateTimeField from "../../components/DateTimeField";
 
 library.add(fas);
 
@@ -581,6 +582,22 @@ export default function GenerateInputsFromSchema(props) {
                   // initialValues={initialValues}
                   setData={props.setData}
                   hidden={input.hidden}
+              />
+          );
+
+          break;
+
+          case "dateTimeField":
+          inputs.push(
+              <DateTimeField
+                  key={key}
+                  name={fieldName}
+                  label={label}
+                  helpText={helpText}
+                  required={required}
+                  disabled={disabled}
+                  // initialValues={initialValues}
+                  setData={props.setData}
               />
           );
 
