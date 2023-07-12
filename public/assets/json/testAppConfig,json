@@ -1,0 +1,119 @@
+{
+  "_id": {
+    "$oid": "639b09e5e0969e00c9652aa3"
+  },
+  "$schema": "https://schemas.on-trac.co.uk/internal/appConfig-1-0-0.json",
+  "service": "RailApps",
+  "name": "Test App",
+  "description": "Use this app to modify the Test App that RailHub uses.",
+  "icon": "address-book",
+  "launchDisplay": "RECORDS",
+  "allCapabilities": [
+    "CREATE",
+    "READ",
+    "UPDATE",
+    "DELETE"
+  ],
+  "appRoles": [{
+      "roleName": "Test App Admin",
+      "capabilities": [
+        "CREATE",
+        "READ",
+        "UPDATE",
+        "DELETE"
+      ]
+    },
+    {
+      "roleName": "Test App Editor",
+      "capabilities": [
+        "CREATE",
+        "READ",
+        "UPDATE",
+        "DELETE"
+      ]
+    },
+    {
+      "roleName": "Test App Viewer",
+      "capabilities": [
+        "READ"
+      ]
+    }
+  ],
+  "appDocumentTypes": [{
+    "documentTypeName": "network-gbr-networkContact",
+    "documentSchemaURI": "https://schemas.on-trac.co.uk/documents/network-gbr/networkContact-1-0-0.json",
+    "statusValues": [
+      "DRAFT",
+      "APPROVED",
+      "WITHDRAWN"
+    ]
+  }],
+  "railFormsConfig": {
+    "recordsViewConfig": {
+      "documentTypeName": "network-gbr-networkContact",
+      "columns": [{
+          "fieldName": "name",
+          "columnTitle": "Contact Name",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 1,
+          "uiComponentName": "textField"
+        },
+        {
+          "fieldName": "telephone",
+          "columnTitle": "Contact Telephone Number",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 2,
+          "uiComponentName": "textField"
+        },
+        {
+          "fieldName": "email",
+          "columnTitle": "Contact Email",
+          "sortable": true,
+          "defaultSortOrder": "ASC",
+          "defaultSortSequence": 3,
+          "uiComponentName": "emailField"
+        }
+      ],
+      "pagination": true,
+      "recordsPerPage": 20
+    },
+    "createUpdateConfig": {
+      "formTitle": "Test App",
+      "formDescription": "Manage Test App Records",
+      "pages": [{
+        "pageElements": [{
+            "uiComponentName": "textField",
+            "boundFieldName": "name",
+            "isRequired": true,
+            "prompt": "Contact Name",
+            "helpText": "Record the name of the contact"
+          },
+          {
+            "uiComponentName": "textField",
+            "boundFieldName": "telephone",
+            "isRequired": true,
+            "prompt": "Contact Telephone Number",
+            "helpText": "Record the contact's telephone number"
+          },
+          {
+            "uiComponentName": "emailField",
+            "boundFieldName": "email",
+            "isRequired": false,
+            "prompt": "Contact Email",
+            "helpText": "Record the contact's email address"
+          },
+          {
+            "uiComponentName": "textField",
+            "boundFieldName": "comments",
+            "isRequired": false,
+            "numRows": 10,
+            "prompt": "Comments",
+            "helpText": "Comments"
+          }
+        ]
+      }]
+    }
+  }
+}

@@ -1,0 +1,76 @@
+[
+  {
+    "name" : "Some app",
+    "link" : "/some-app",
+    "description" : "Such a lovely app, oh my. This app does this and that and something else. We summarised it right here.",
+    "status": "favourite"
+  },
+  {
+    "name" : "App two",
+    "link" : "/app-two",
+    "status" : "favourite"
+  },
+  {
+    "name" : "Application name",
+    "link" : "/application-name",
+    "description" : "This is an app description. It tells you all about this fantastic interwebs application and all the things it's supposed to do.",
+    "status" : "pinned"
+  },
+  {
+    "name" : "More apps",
+    "link" : "/more-app",
+    "description" : "Description, description. It's another fiction. Filling up some space with that fabricated diction.",
+    "status" : "updated"
+  },
+  {
+    "name" : "Some app",
+    "link" : "/some-app",
+    "description" : "This app is just more forms. Forms all day for everyone all of the time. It's a bit like sports-ball in that way."
+  },
+  {
+    "name" : "Internetanwendung",
+    "link" : "/app-two"
+  },
+  {
+    "name" : "Application name",
+    "link" : "/application-name"
+  },
+  {
+    "name" : "More apps",
+    "link" : "/more-app"
+  },
+  {
+    "name" : "Some app",
+    "link" : "/some-app",
+    "description" : "Is it a bird? Is it a plane? Is it a form? Yes, yes it's a form, and probably some tables."
+  },
+  {
+    "name" : "App two",
+    "link" : "/app-two"
+  },
+  {
+    "name" : "Application name",
+    "link" : "/application-name"
+  },
+  {
+    "name" : "More apps",
+    "link" : "/more-app"
+  },
+  {
+    "name" : "Some app",
+    "link" : "/some-app",
+    "description" : "Such a lovely app, oh my."
+  },
+  {
+    "name" : "App two",
+    "link" : "/app-two"
+  },
+  {
+    "name" : "Application name",
+    "link" : "/application-name"
+  },
+  {
+    "name" : "More apps",
+    "link" : "/more-app"
+  }
+]
